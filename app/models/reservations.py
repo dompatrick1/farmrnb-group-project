@@ -10,3 +10,13 @@ class Reservation(db.Model):
     farmId = db.Column(db.Integer, db.ForeignKey('farms.id'), nullable = False)
     startDate = db.Column(db.Date, nullable = False)
     endDate = db.Column(db.Date, nullable = False)
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.userId,
+            "farmId": self.farmId,
+            "startDate": self.startDate,
+            "endDate": self.endDate
+        }

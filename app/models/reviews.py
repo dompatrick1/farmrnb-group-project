@@ -1,6 +1,6 @@
 from .db import db
 from .farm import Farm
-from .user import User 
+from .user import User
 
 class Review(db.Model):
     __tablename__ = 'reviews'
@@ -10,3 +10,13 @@ class Review(db.Model):
     rating = db.Column(db.Integer, nullable = False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     farmId = db.Column(db.Integer, db.ForeignKey('farms.id'), nullable = False)
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "review": self.review,
+            "rating": self.rating,
+            "userId": self.userId,
+            "farmId": self.farmId
+        }
