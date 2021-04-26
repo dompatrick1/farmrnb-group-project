@@ -10,8 +10,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    isHost = db.Column(db.Boolean, nullable=False, default=False)
+
+    isHost = db.Column(db.Boolean, nullable=False)
     image = db.Column(db.String)
+    reviews = db.relationship('Review', backref = 'users')
+    reservations = db.relationship('Reservation', backref = 'users')
 
     @property
     def password(self):
