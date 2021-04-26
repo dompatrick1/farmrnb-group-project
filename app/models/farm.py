@@ -15,3 +15,17 @@ class Farm(db.Model):
     reservations = db.relationship('Reservation', backref = 'farms')
     reviews = db.relationship('Review', backref = 'farms')
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "type": self.type,
+            "job": self.job,
+            "description": self.description,
+            "address": self.address,
+            "state": self.state,
+            "ownerId": self.ownerId,
+            "images": self.images
+        }
+
+
