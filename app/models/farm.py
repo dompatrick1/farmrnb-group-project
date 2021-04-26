@@ -11,4 +11,7 @@ class Farm(db.Model):
     address = db.Column(db.String(100), nullable=False)
     state = db.Column(db.String(100), nullable=False)
     ownerId = db.Column(db.Integer)
+    images = db.relationship('Image', backref = 'farms')
+    reservations = db.relationship('Reservation', backref = 'farms')
+    reviews = db.relationship('Review', backref = 'farms')
 
