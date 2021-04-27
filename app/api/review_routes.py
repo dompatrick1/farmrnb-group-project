@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify
-from app.models import Review
+from flask import Blueprint, jsonify, request, redirect
+from app.models import Review, db
 from app.forms import NewReviewForm
 
 review_routes = Blueprint('reviews', __name__)
@@ -26,3 +26,11 @@ def get_user_reviews(id):
 @review_routes.route('/farm/<int:id>', methods=["POST"])
 def create_review(review):
     form = NewReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        newReview = Review()
+        form.populate_obj(newReview)
+        db.session.add(newReview)
+        db.session.commit()
+        return redirect(f'/farm/{review.farmId}')
+    return 'Bad Data'
