@@ -10,11 +10,12 @@ function CreateReviewForm() {
     const { id } = useParams()
     const [review, setReview] = useState('')
     const [rating, setRating] = useState(5)
+    const [errors, setErrors] = useState([])
     const history = useHistory()
-
     const farmId = parseInt(id)
-    console.log(farmId)
-    console.log(sessionUser.id)
+
+    // console.log(farmId)
+    // console.log(sessionUser.id)
 
     if (sessionUser) {
         userId = sessionUser.id
@@ -23,20 +24,30 @@ function CreateReviewForm() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        setErrors([])
+
         const payload = {
             review,
             rating,
             userId,
             farmId
         }
-        console.log(payload, "----------------")
+        // console.log(payload, "----------------")
         dispatch(createReviewThunk(payload))
+            .catch(async (res) => {
+                const data = await res.json()
+                if (data && data.errors) setErrors(data.errors)
+
+            })
         // history.push(`/`)
     }
 
     return (
         <>
             <form onSubmit={handleSubmit}>
+                <ul>
+                    {errors.map((error, index) => <li key={index}>{error}</li>)}
+                </ul>
                 <input
                     type="text"
                     placeholder="Leave a review..."

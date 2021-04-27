@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import CreateReviewForm from "../reviews/createReview"
 
-function Farm () {
+function Farm() {
     const dispatch = useDispatch()
     const farm = useSelector(state => state.farms);
 
