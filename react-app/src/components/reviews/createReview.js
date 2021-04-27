@@ -14,9 +14,6 @@ function CreateReviewForm() {
     const history = useHistory()
     const farmId = parseInt(id)
 
-    // console.log(farmId)
-    // console.log(sessionUser.id)
-
     if (sessionUser) {
         userId = sessionUser.id
     }
@@ -32,14 +29,14 @@ function CreateReviewForm() {
             userId,
             farmId
         }
-        // console.log(payload, "----------------")
+
         dispatch(createReviewThunk(payload))
             .catch(async (res) => {
                 const data = await res.json()
                 if (data && data.errors) setErrors(data.errors)
 
             })
-        // history.push(`/`)
+        history.push(`/farm/${farmId}`)
     }
 
     return (

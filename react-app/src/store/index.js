@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session'
 import farmReducer from './farm'
 import reviewReducer from './review'
+import imagesReducer from './image'
 
 
 const rootReducer = combineReducers({
     session,
     farms: farmReducer,
-    reviews: reviewReducer
+    reviews: reviewReducer,
+    images: imagesReducer
 });
 
 let enhancer;
