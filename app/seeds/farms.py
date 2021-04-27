@@ -4,8 +4,9 @@ from app.models import db, Farm
 def seed_farms():
     farm1 = [
         Farm(
-            name="Farm 1", type="Cannabis", job="you're harvesting cannabis",
-            description="15 acres of lush green", address="1 farm blvd", state="NY"),
+            name="Glorie Farm Winery", type="Winery", job="Harvesting grapes and bottling wine",
+            description="Glorie Farms provides the highest quality Hudson Valley fruit to markets, csa, and farm stands across the Hudson Valley including Westchester, Rockland, and Fairfield County. We are looking for farm hands to work in the orchard and vineyard",
+            address="40 Mountain Road", state="NY"),
         Farm(
             name="Farm 2", type="Fishery", job="you're cultivating fish",
             description="15 acres of fish tanks", address="2 farm blvd", state="NY"),
