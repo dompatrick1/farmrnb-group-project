@@ -10,7 +10,7 @@ def all_images():
     return {"images": [image.to_dict() for image in images]}
 
 
-@image_routes.route('/farm/images/<int:id>')
+@image_routes.route('/farm/<int:id>')
 def getFarmImages(id):
     images = Image.query.filter(Image.farmId == id).all()
     return {"images": [image.to_dict() for image in images]}

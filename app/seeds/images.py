@@ -2,7 +2,7 @@ from app.models import db, Image
 
 
 def seed_images():
-    images = [
+    allImages = [
         Image(
             image='./images/GlorieWinery1.jpg', farmId=1
         ),
@@ -14,9 +14,10 @@ def seed_images():
         )
     ]
 
-    db.session.add_all(images)
+    db.session.add_all(allImages)
     db.session.commit()
 
-    def undo_images():
-        db.session.execute('TRUNCATE images RESTART IDENTITY CASCADE;')
-        db.session.commit()
+
+def undo_images():
+    db.session.execute('TRUNCATE images RESTART IDENTITY CASCADE;')
+    db.session.commit()
