@@ -1,18 +1,18 @@
-import {createReviewThunk} from '../../store/review'
+import { createReviewThunk } from '../../store/review'
 import { useDispatch, useSelector } from 'react-redux'
-import {useParams, useHistory} from 'react-router-dom'
-import React, {useEffect, useState} from 'react'
+import { useParams, useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 
-function CreateReviewForm () {
+function CreateReviewForm() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     let userId
-    const {id} = useParams()
+    const { id } = useParams()
     const [review, setReview] = useState('')
     const [rating, setRating] = useState(5)
     const history = useHistory()
 
-    const farmId = id
+    const farmId = parseInt(id)
     console.log(farmId)
     console.log(sessionUser.id)
 
@@ -29,9 +29,9 @@ function CreateReviewForm () {
             userId,
             farmId
         }
-        console.log(payload)
+        console.log(payload, "----------------")
         dispatch(createReviewThunk(payload))
-        history.push(`/`)
+        // history.push(`/`)
     }
 
     return (

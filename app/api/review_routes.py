@@ -32,5 +32,5 @@ def create_review(id):
         form.populate_obj(newReview)
         db.session.add(newReview)
         db.session.commit()
-        return newReview
+        return newReview.to_dict()
     return 'Bad Data'
