@@ -1,4 +1,6 @@
 //constraints
+import { useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 
 const GET_FARM_REVIEWS = "reviews/GET_FARM_REVIEWS"
 const GET_USER_REVIEWS = "reviews/GET_USER_REVIEWS"
@@ -53,7 +55,10 @@ export const getUserReviewsThunk = (id) => async (dispatch) => {
 }
 
 export const createReviewThunk = (review) => async (dispatch) => {
-  const { review, rating, userId, farmId } = reviews
+  const { review, rating } = reviews
+  const { farmId } = useParams()
+  const sessionUserId = useSelector(state => state.session.user.id)
+
 
   const response = await fetch(`/api/reviews`, {
     method: "POST",
