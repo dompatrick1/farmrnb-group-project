@@ -1,5 +1,6 @@
 from .db import db
 
+
 class Farm(db.Model):
     __tablename__ = 'farms'
 
@@ -11,9 +12,9 @@ class Farm(db.Model):
     address = db.Column(db.String(100), nullable=False)
     state = db.Column(db.String(100), nullable=False)
     ownerId = db.Column(db.Integer)
-    images = db.relationship('Image', backref = 'farms')
-    reservations = db.relationship('Reservation', backref = 'farms')
-    reviews = db.relationship('Review', backref = 'farms')
+    images = db.relationship('Image', backref='farms')
+    reservations = db.relationship('Reservation', backref='farms')
+    reviews = db.relationship('Review', backref='farms')
 
     def to_dict(self):
         return {
@@ -24,8 +25,5 @@ class Farm(db.Model):
             "description": self.description,
             "address": self.address,
             "state": self.state,
-            "ownerId": self.ownerId,
-            "images": self.images
+            "ownerId": self.ownerId
         }
-
-

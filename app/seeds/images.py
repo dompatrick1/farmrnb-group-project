@@ -4,13 +4,13 @@ from app.models import db, Image
 def seed_images():
     allImages = [
         Image(
-            image='./images/GlorieWinery1.jpg', farmId=1
+            image='/GlorieWinery1.jpg', farmId=1
         ),
         Image(
-            image='./images/GlorieWinery1.jpg', farmId=1
+            image='/GlorieWinery2.jpg', farmId=1
         ),
         Image(
-            image='./images/GlorieWinery1.jpg', farmId=1
+            image='/GlorieWinery3.jpg', farmId=1
         )
     ]
 
