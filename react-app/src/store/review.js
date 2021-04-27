@@ -1,6 +1,5 @@
 //constraints
-import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+
 
 const GET_FARM_REVIEWS = "reviews/GET_FARM_REVIEWS"
 const GET_USER_REVIEWS = "reviews/GET_USER_REVIEWS"
@@ -54,14 +53,14 @@ export const getUserReviewsThunk = (id) => async (dispatch) => {
   dispatch(get_user_reviews(userReviews))
 }
 
-export const createReviewThunk = (review) => async (dispatch) => {
-  const { review, rating } = reviews
-  const { farmId } = useParams()
-  const sessionUserId = useSelector(state => state.session.user.id)
+export const createReviewThunk = (reviews) => async (dispatch) => {
+  const { review, rating, userId, farmId } = reviews
 
-
-  const response = await fetch(`/api/reviews`, {
+  const response = await fetch(`/api/reviews/farm/${farmId}`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       review,
       rating,
