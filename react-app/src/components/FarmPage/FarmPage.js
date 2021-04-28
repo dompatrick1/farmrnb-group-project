@@ -15,7 +15,6 @@ function Farm() {
     const farm = farms[id]
 
     const imagesArray = Object.values(images)
-    console.log('images', imagesArray)
 
     useEffect(() => {
         dispatch(getFarmsThunk())

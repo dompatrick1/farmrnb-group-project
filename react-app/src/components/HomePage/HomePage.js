@@ -8,11 +8,10 @@ import "./HomePage.css"
 function Home() {
   const dispatch = useDispatch()
   const farms = useSelector(state => state.farms)
-  console.log('Farms', farms)
 
   useEffect(() => {
     dispatch(getFarmsThunk())
-  }, [dispatch, farms])
+  }, [dispatch])
 
   //maybe talk about validators if farms is not in database(but it really is)
 
@@ -20,7 +19,6 @@ function Home() {
   //filter by type of farms (Winery and Dairy)
 
     const wineryElement = Object.values(farms).filter(farm => farm.type === "Winery").map(farm => {
-      console.log('Wine', farm)
       return (
           <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
             <p>{farm.name}</p>

@@ -9,7 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Farm from "./components/FarmPage/FarmPage"
 import Home from "./components/HomePage/HomePage"
-import MapContainer from "./components/GoogleMaps/MapContainer"
+import SearchResults from "./components/SearchResults/SearchResults"
 
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
@@ -58,6 +58,10 @@ function App() {
 
         <Route path="/" exact={true}>
           <Home />
+        </Route>
+
+        <Route path="/searchResults" exact={true}>
+          <SearchResults />
         </Route>
 
       </Switch>
