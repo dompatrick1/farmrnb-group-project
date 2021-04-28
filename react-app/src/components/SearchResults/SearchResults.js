@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { getFarmsThunk } from '../../store/farm'
 import { useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
@@ -6,6 +7,7 @@ import './SearchResults.css'
 
 const SearchResults = (props) => {
   const farms = Object.values(useSelector(state => state.farms))
+  const dispatch = useDispatch()
   let location = useLocation()
   // const [farms, setFarms] = useState()
 
@@ -34,6 +36,10 @@ const SearchResults = (props) => {
         </Link>
       )
     })
+
+    useEffect(() => {
+      dispatch(getFarmsThunk())
+    }, [dispatch])
 
 
     return (
