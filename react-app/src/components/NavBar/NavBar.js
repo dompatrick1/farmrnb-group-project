@@ -12,7 +12,7 @@ const NavBar = () => {
   const farmsArray = Object.values(farms)
 
   const [location, setLocation] = useState("")
-  const [type, setType] = useState("")
+  // const [type, setType] = useState("")
 
   const uniqueArray = []
 
@@ -51,13 +51,13 @@ const NavBar = () => {
               placeholder="Location..."
               onChange={(e) => setLocation(e.target.value)}
             />
-              {uniqueArray.length ? 
+              {uniqueArray.length ?
                 uniqueArray.map((val, key) => {
                   console.log('UArray', uniqueArray)
                   return (
                     <div key={key}>
-                      <NavLink to={{ 
-                         pathname: "/searchResults", 
+                      <NavLink to={{
+                         pathname: "/searchResults",
                          state : {
                           val : val
                          },
@@ -68,12 +68,6 @@ const NavBar = () => {
                   )
                 })
               : null}
-            <select
-              onChange={e => setType(e.target.value)}
-              value={type}
-            >
-              
-            </select>
           </form>
         </li>
         <div>
