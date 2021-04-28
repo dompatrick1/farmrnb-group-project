@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Farm from "./components/FarmPage/FarmPage"
+import Home from "./components/HomePage/HomePage"
 import MapContainer from "./components/GoogleMaps/MapContainer"
 
 // import { authenticate } from "./services/auth";
@@ -18,8 +19,9 @@ function App() {
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
 
+
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate())
       setLoaded(true);
     })();
@@ -47,16 +49,16 @@ function App() {
         </Route>
 
         <ProtectedRoute path="/users" exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
 
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/" exact={true}>
-          <MapContainer />
-        </ProtectedRoute>
+        <Route path="/" exact={true}>
+          <Home />
+        </Route>
 
       </Switch>
     </BrowserRouter>

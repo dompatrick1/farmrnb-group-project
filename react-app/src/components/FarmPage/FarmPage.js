@@ -1,4 +1,4 @@
-import { getOneFarmThunk } from '../../store/farm'
+import { getFarmsThunk } from '../../store/farm'
 import { getFarmImagesThunk } from '../../store/image'
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect } from 'react'
@@ -7,17 +7,18 @@ import CreateReviewForm from "../reviews/createReview"
 
 function Farm() {
     const dispatch = useDispatch()
-    const farm = useSelector(state => state.farms);
+    const farms = useSelector(state => state.farms);
     const images = useSelector(state => state.images);
    
 
     const { id } = useParams();
+    const farm = farms[id]
 
     const imagesArray = Object.values(images)
     console.log('images', imagesArray)
 
     useEffect(() => {
-        dispatch(getOneFarmThunk(id))
+        dispatch(getFarmsThunk())
         dispatch(getFarmImagesThunk(id))
     }, [dispatch, id])
 
