@@ -28,9 +28,13 @@ function Farm() {
                 {imagesArray.map((image) => <img key={image.id} src={image.image} alt={image.image}/>)}
             </div>
             <div>
-                <p>{farm.name}</p>
-                <p>{farm.description}</p>
-                <p>{farm.job}</p>
+                {farm ?
+                    <div>
+                        <p>{farm.name}</p>
+                        <p>{farm.description}</p>
+                        <p>{farm.job}</p>
+                    </div>
+                : null}
             </div>
             <div>
                 <CreateReviewForm />

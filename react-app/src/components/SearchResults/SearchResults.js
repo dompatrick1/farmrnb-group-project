@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
@@ -7,9 +7,13 @@ import './SearchResults.css'
 const SearchResults = (props) => {
   const farms = Object.values(useSelector(state => state.farms))
   let location = useLocation()
+  // const [farms, setFarms] = useState()
+
+  let stateVal = location.state.val
+
 
   let searchedFarms = farms.filter(farm => {
-    return (farm.state === location.state.val)
+    return (farm.state === stateVal)
   })
 
   console.log('---------------', searchedFarms)
