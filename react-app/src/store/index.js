@@ -4,13 +4,15 @@ import session from './session'
 import farmReducer from './farm'
 import reviewReducer from './review'
 import imagesReducer from './image'
+import reservationReducer from './reservation'
 
 
 const rootReducer = combineReducers({
     session,
     farms: farmReducer,
     reviews: reviewReducer,
-    images: imagesReducer
+    images: imagesReducer,
+    reservations: reservationReducer
 });
 
 let enhancer;
