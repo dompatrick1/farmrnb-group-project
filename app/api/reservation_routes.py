@@ -1,5 +1,6 @@
-from flask import Blueprint, jsonify
-from app.models import Reservation
+from flask import Blueprint, jsonify, request
+from app.models import Reservation, db
+from app.forms import NewReservationForm
 
 reservation_routes = Blueprint('reservations', __name__)
 
@@ -19,3 +20,16 @@ def get_farm_reservation(id):
 def get_user_reservation(id):
     reservations = Reservation.query.filter(Reservation.userId == id).all()
     return {"reservations": [reservation.to_dict() for reservation in reservations]}
+
+
+@reservation_routes.route('/farm/<int:id>', methods=["POST"])
+def create_reservation(id):
+    form = NewReservationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        newReservation = Reservation()
+        form.populate_obj(newReservation)
+        db.session.add(newReservation)
+        db.session.commit()
+        return newReservation.to_dict()
+    return 'Bad Data'

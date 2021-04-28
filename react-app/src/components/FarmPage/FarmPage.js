@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import CreateReviewForm from "../reviews/createReview"
+import CreateReservationForm from "../reservations/createReservation"
 
 function Farm() {
     const dispatch = useDispatch()
     const farm = useSelector(state => state.farms);
     const images = useSelector(state => state.images);
-   
+
 
     const { id } = useParams();
 
@@ -33,6 +34,9 @@ function Farm() {
             </div>
             <div>
                 <CreateReviewForm />
+            </div>
+            <div>
+                <CreateReservationForm />
             </div>
         </>
     )
