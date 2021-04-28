@@ -1,40 +1,53 @@
 import React, { useEffect } from "react"
 import { getFarmsThunk } from "../../store/farm"
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom'
 
 import "./HomePage.css"
 
 function Home() {
   const dispatch = useDispatch()
   const farms = useSelector(state => state.farms)
-
+  console.log('Farms', farms)
 
   useEffect(() => {
     dispatch(getFarmsThunk())
-  }, [dispatch])
+  }, [dispatch, farms])
 
   //maybe talk about validators if farms is not in database(but it really is)
 
 
   //filter by type of farms (Winery and Dairy)
-  const agricultureElement = Object.values(farms).filter(farm => farm.type === "Agriculture").map(farm => {
 
-    return (
-      <>
-        <div key={farm.id}>
-          <p>{farm.name}</p>
-          <p>{farm.type}</p>
-        </div>
-      </>
-    )
-  })
+    const wineryElement = Object.values(farms).filter(farm => farm.type === "Winery").map(farm => {
+      console.log('Wine', farm)
+      return (
+          <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
+            <p>{farm.name}</p>
+            <p>{farm.type}</p>
+          </Link>
+      )
+    })
+
+    const dairyElement = Object.values(farms).filter(farm => farm.type === "Dairy Farm").map(farm => {
+      return (
+          <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
+            <p>{farm.name}</p>
+            <p>{farm.type}</p>
+          </Link>
+      )
+    })
 
   return (
     <>
 
       <h1>This is rendering Homepage</h1>
-
-      <div>{agricultureElement}</div>
+      {farms &&
+      <div>
+        <div>{wineryElement}</div>
+        <div>{dairyElement}</div>
+      </div>
+      }
     </>
   )
 }
