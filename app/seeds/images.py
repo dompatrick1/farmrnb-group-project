@@ -49,7 +49,7 @@ def seed_images():
             image='/Brickstead3.jpg', farmId=5
         ),
         Image(
-            image='/Pagels1.jpg', farmId=6
+            image='/Pagels1.png', farmId=6
         ),
         Image(
             image='/Pagels2.jpg', farmId=6
