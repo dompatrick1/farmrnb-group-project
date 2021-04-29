@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { getFarmsThunk } from '../../store/farm'
 import { useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './SearchResults.css'
 
 const SearchResults = (props) => {
   const farms = Object.values(useSelector(state => state.farms))
   const dispatch = useDispatch()
+  const [selected, setSelected] = useState({})
   let location = useLocation()
   const locations = [
     {
@@ -15,7 +16,10 @@ const SearchResults = (props) => {
       location: { lat: 41.61781002082245, lng: -74.01261700215811 }
     }
   ]
-  // const [farms, setFarms] = useState()
+
+  const onSelect = (item) => {
+    setSelected(item)
+  }
 
   let stateVal = location.state.val
 
@@ -24,7 +28,7 @@ const SearchResults = (props) => {
     return (farm.state === stateVal)
   })
 
-  console.log('---------------', searchedFarms)
+
 
   const mapStyles = {
     height: "100vh",
@@ -59,7 +63,19 @@ const SearchResults = (props) => {
           zoom={5}
           center={defaultCenter}
         >
-          <Marker key={locations[0].name} position={locations[0].location} />
+          <Marker key={locations[0].name} position={locations[0].location} onClick={() => onSelect(locations[0])} />
+          {
+            selected.location &&
+            (
+              <InfoWindow
+                position={locations[0].location}
+                clickable={true}
+                onCloseClick={() => setSelected({})}
+              >
+                <a href={`/farm/${searchedFarms[0].id}`}>{selected.name}</a>
+              </InfoWindow>
+            )
+          }
         </GoogleMap>
 
       </LoadScript>
