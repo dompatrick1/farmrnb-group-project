@@ -1,4 +1,4 @@
-import {createReservationThunk} from '../../store/reservation'
+import {createReservationThunk, getFarmReservationsThunk} from '../../store/reservation'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 function CreateReservationForm() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
+    const reservations = useSelector(state => state.reservations)
     let userId
     const { id } = useParams()
     const [startDate, setStartDate] = useState()
@@ -13,6 +14,11 @@ function CreateReservationForm() {
     const [errors, setErrors] = useState([])
     const history = useHistory()
     const farmId = parseInt(id)
+
+    useEffect(() => {
+        dispatch(getFarmReservationsThunk(id))
+    }, [dispatch, id])
+
 
     if (sessionUser) {
         userId = sessionUser.id
