@@ -26,25 +26,26 @@ function UserProfile() {
     <div className="parentContainer">
       <ul>
         <li>
-          <strong>User Id</strong> {userId}
-        </li>
-        <li>
-          <strong>Username</strong> {user.username}
+          <strong>Username {user.username} </strong> {user.username}
         </li>
         <li>
           <strong>Email</strong> {user.email}
         </li>
-        <h2>Hiiiiiiiiiiiiiiiiiii</h2>
       </ul>
 
-      <div>
+      <div className="userReservationContainer">
+        <p>Your upcoming visits!</p>
         {userReservations.map(reservation => {
+          const options = { year: "numeric", month: "long", day: "numeric" }
+          const start = new Date(reservation.startDate).toLocaleDateString(undefined, options)
+          const end = new Date(reservation.endDate).toLocaleDateString(undefined, options)
           return (
-            <Link to={`/farm/${farmId}`} key={reservation.id} className="reservationLink"/>
-              <p>{reservation.startDate}</p>
-
+            <Link to={`/farm/${reservation.farmId}`} key={reservation.id} className="reservationLink">
+              <p>{start}</p>
+              <p>{end}</p>
+            </Link>
           )
-        }
+        })}
       </div>
     </div>
   );
