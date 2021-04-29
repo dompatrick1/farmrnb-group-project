@@ -9,6 +9,8 @@ function UserProfile() {
   const dispatch = useDispatch()
   const [user, setUser] = useState({});
 
+  console.log("==================", userId)
+
   useEffect(() => {
     dispatch(getUserReservationsThunk(userId))
   }, [dispatch])
