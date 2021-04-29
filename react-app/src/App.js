@@ -10,6 +10,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import Farm from "./components/FarmPage/FarmPage"
 import Home from "./components/HomePage/HomePage"
 import SearchResults from "./components/SearchResults/SearchResults"
+import Calendar from "./components/testCalendar/testCalendar"
 
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
@@ -62,6 +63,10 @@ function App() {
 
         <Route path="/searchResults" exact={true}>
           <SearchResults />
+        </Route>
+
+        <Route path="/testCalendar" exact={true}>
+          <Calendar />
         </Route>
 
       </Switch>
