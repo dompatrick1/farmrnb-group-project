@@ -67,13 +67,13 @@ def seed_images():
             image='/Newcomer3.jpg', farmId=7
         ),
         Image(
-            image='/Neise1.jpg', farmId=8
+            image='/Niese1.jpg', farmId=8
         ),
         Image(
-            image='/Neise2.jpg', farmId=8
+            image='/Niese2.jpg', farmId=8
         ),
         Image(
-            image='/Neise3.jpg', farmId=8
+            image='/Niese3.jpg', farmId=8
         ),
         Image(
             image='/franklinton1.jpg', farmId=9
