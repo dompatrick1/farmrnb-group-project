@@ -10,17 +10,6 @@ function CreateReservationForm() {
     const sessionUser = useSelector(state => state.session.user);
     const reservations = Object.values(useSelector(state => state.reservations))
 
-    const startDateArray = [];
-    const endDateArray = [];
-
-    console.log("Start", startDateArray)
-    console.log("End", endDateArray)
-
-    const reservationArray = reservations.map(reservation => {
-        startDateArray.push(reservation.startDate)
-        endDateArray.push(reservation.endDate)
-    })
-
     let userId
     const { id } = useParams()
 
@@ -58,6 +47,8 @@ function CreateReservationForm() {
     }
 
     let today = new Date().toLocaleDateString()
+    console.log('Today', today)
+
 
     return (
         <>

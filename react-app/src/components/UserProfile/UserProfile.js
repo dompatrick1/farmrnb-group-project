@@ -37,7 +37,7 @@ function UserProfile() {
         <h2>Hiiiiiiiiiiiiiiiiiii</h2>
       </ul>
 
-      <div>
+      {/* <div>
         {userReservations.map(reservation => {
           return (
             <Link to={`/farm/${farmId}`} key={reservation.id} className="reservationLink"/>
@@ -45,7 +45,7 @@ function UserProfile() {
 
           )
         }
-      </div>
+      </div> */}
     </div>
   );
 }

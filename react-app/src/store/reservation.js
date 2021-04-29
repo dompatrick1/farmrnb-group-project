@@ -33,7 +33,7 @@ const edit_reservation = (reservation) => ({
 // ****************** THUNKS ******************** //
 
 export const getFarmReservationsThunk = (id) => async dispatch => {
-    const response = await fetch(`/api/reservations/${id}`)
+    const response = await fetch(`/api/reservations/farm/${id}`)
     if (!response.ok) {
         throw response
     }
