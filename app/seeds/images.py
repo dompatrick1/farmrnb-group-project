@@ -56,7 +56,61 @@ def seed_images():
         ),
         Image(
             image='/Pagels3.jpg', farmId=6
-        )
+        ),
+        Image(
+            image='/Newcomer1.jpg', farmId=7
+        ),
+        Image(
+            image='/Newcomer2.jpg', farmId=7
+        ),
+        Image(
+            image='/Newcomer3.jpg', farmId=7
+        ),
+        Image(
+            image='/Neise1.jpg', farmId=8
+        ),
+        Image(
+            image='/Neise2.jpg', farmId=8
+        ),
+        Image(
+            image='/Neise3.jpg', farmId=8
+        ),
+        Image(
+            image='/franklinton1.jpg', farmId=9
+        ),
+        Image(
+            image='/franklinton2.jpg', farmId=9
+        ),
+        Image(
+            image='/franklinton3.jpg', farmId=9
+        ),
+        Image(
+            image='/NoBoundaries1.jpg', farmId=10
+        ),
+        Image(
+            image='/NoBoundaries2.jpg', farmId=10
+        ),
+        Image(
+            image='/NoBoundaries3.jpg', farmId=10
+        ),
+        Image(
+            image='/temple1.png', farmId=11
+        ),
+        Image(
+            image='/temple2.jpg', farmId=11
+        ),
+        Image(
+            image='/temple3.jpg', farmId=11
+        ),
+        Image(
+            image='/GlassHouse1.jpg', farmId=12
+        ),
+        Image(
+            image='/GlassHouse2.jpg', farmId=12
+        ),
+        Image(
+            image='/GlassHouse3.jpg', farmId=12
+        ),
     ]
 
     db.session.add_all(allImages)

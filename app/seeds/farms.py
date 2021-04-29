@@ -27,6 +27,30 @@ def seed_farms():
             name="Pagel's Ponderosa Dairy", type="Dairy Farm", job="General maintenance, cleaning, and bottling and packing of our products.",
             description="Our family farm is committed to producing dairy products of the highest quality by practicing humane, low-stress cow handling, maintaining the local landscape integrity through environmental stewardship, and providing a safe and respectful environment for employees. Our passion comes from pride in our family’s legacy, and our hard work honors the sacrifices our ancestors made to achieve the Pagel’s Ponderosa dream!",
             address="N4893 County C, Kewaunee, WI 54216", state="Wisconsin"),
+        Farm(
+            name="Newcomer Farms", type="Agriculture", job="General maintenance, cleaning, quality assurance, and packaging.",
+            description="Sill operating from the original homestead since 1866, Newcomer Farms understands the importance of being a good steward of our land and resources. From large, complex farming operations to small family-owned fields, Newcomer Farms is your partner in maintaining your farmland and ensuring that it remains beautiful and profitable for generations to come.",
+            address="2-454 State Route 15, Bryan, OH 43506", state="Ohio"),
+        Farm(
+            name="Niese Farms", type="Agriculture", job="General maintenance, cleaning, quality assurance, and packaging.",
+            description="Niese Farms is a corn and soybean grain farm located in Crestline, Oh. We are a family run business that has been operating for over 70 years.",
+            address="7506 Cole Rd, Crestline, OH 44827", state="Ohio"),
+        Farm(
+            name="Franklinton Farms", type="Agriculture", job="Helping to build a community of farms. Help us distribute the resources to eliminate the barrier to farming.",
+            description="Here at Franklinton Farms, we believe in the power of seeds. We envision a neighborhood and food system that respects the land, values all people, and celebrates community.",
+            address="867 W Town St, Columbus, OH 43222", state="Ohio"),
+        Farm(
+            name="No Boundaries Farm", type="Hemp", job="Harvesting, packing, shipping, and general maintenance and cleaning.",
+            description="Our farm was established to provide quality product to nourish one's health, strength and spirit with passion and convenience. Our mission is to provide an alternative, natural way of healing without using industrialized pharmaceutical. We're located in the mountains of San Diego County, where all of our product is grown with plenty of love and attention.",
+            address="Jamul, CA 91935", state="California"),
+        Farm(
+            name="Temple Farms", type="Hemp", job="Harvesting, packing, shipping, and general maintenance and cleaning.",
+            description="Temple Farms is a family-owned boutique farm located in Central California's Coastal wine region. Four-generations have been growing on our farm since 1974. Nestled beside the Salinas River our unique and sunny terroir is perfect for growing hemp flowers. We have teamed with fabulous formulators to bring our organically-grown CBD beauty products to the world.",
+            address="730 Marquita Ave, Templeton, CA 93465", state="California"),
+        Farm(
+            name="Glass House Farms", type="Hemp", job="Harvesting, packing, shipping, and general maintenance and cleaning.",
+            description="Glass House Farms cultivates its cannabis in sparkling clean, eco-friendly greenhouses using innovative environmental controls that; maximize the coastal sun’s benefit, eliminate harsh elements and bugs that tamper with quality, minimize waste, and maximize water retention with state-of-the-art recapture systems. Each flower is trimmed and packaged with exceeding care to deliver a consistently premium craft cannabis product.",
+            address="5601 Casitas Pass Rd, Carpinteria, CA 93013", state="California"),
     ]
 
     # for farm in farm1:
