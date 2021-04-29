@@ -36,6 +36,24 @@ function Home() {
       )
     })
 
+    const agricultureElement = Object.values(farms).filter(farm => farm.type === "Agriculture").map(farm => {
+      return (
+          <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
+            <p>{farm.name}</p>
+            <p>{farm.type}</p>
+          </Link>
+      )
+    })
+
+    const hempElement = Object.values(farms).filter(farm => farm.type === "Hemp").map(farm => {
+      return (
+          <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
+            <p>{farm.name}</p>
+            <p>{farm.type}</p>
+          </Link>
+      )
+    })
+
   return (
     <>
 
@@ -44,6 +62,8 @@ function Home() {
       <div>
         <div>{wineryElement}</div>
         <div>{dairyElement}</div>
+        <div>{agricultureElement}</div>
+        <div>{hempElement}</div>
       </div>
       }
     </>
