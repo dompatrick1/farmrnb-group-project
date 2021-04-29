@@ -47,7 +47,7 @@ def seed_farms():
         Farm(
             name="Temple Farms", type="Hemp", job="Harvesting, packing, shipping, and general maintenance and cleaning.",
             description="Temple Farms is a family-owned boutique farm located in Central California's Coastal wine region. Four-generations have been growing on our farm since 1974. Nestled beside the Salinas River our unique and sunny terroir is perfect for growing hemp flowers. We have teamed with fabulous formulators to bring our organically-grown CBD beauty products to the world.",
-            address="730 Marquita Ave, Templeton, CA 93465", state="California"), latitude=35.574502714069425, longitude=-120.68460485978403,
+            address="730 Marquita Ave, Templeton, CA 93465", state="California", latitude=35.574502714069425, longitude=-120.68460485978403),
         Farm(
             name="Glass House Farms", type="Hemp", job="Harvesting, packing, shipping, and general maintenance and cleaning.",
             description="Glass House Farms cultivates its cannabis in sparkling clean, eco-friendly greenhouses using innovative environmental controls that; maximize the coastal sun’s benefit, eliminate harsh elements and bugs that tamper with quality, minimize waste, and maximize water retention with state-of-the-art recapture systems. Each flower is trimmed and packaged with exceeding care to deliver a consistently premium craft cannabis product.",
