@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    isHost = db.Column(db.Boolean, nullable=False)
+    isHost = db.Column(db.Boolean)
     image = db.Column(db.String)
     reviews = db.relationship('Review', backref = 'users')
     reservations = db.relationship('Reservation', backref = 'users')
