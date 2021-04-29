@@ -48,7 +48,7 @@ const NavBar = () => {
             <input
               value={location}
               type="text"
-              placeholder="Location..."
+              placeholder="Search by State..."
               onChange={(e) => setLocation(e.target.value)}
             />
               {uniqueArray.length ?

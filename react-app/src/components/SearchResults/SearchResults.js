@@ -74,7 +74,9 @@ const SearchResults = (props) => {
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={5}
-          center={defaultCenter}
+          center={locations.length ?
+            locations[0].location
+          : defaultCenter}
         >
           {locations.length ? 
             locations.map(farm => {
