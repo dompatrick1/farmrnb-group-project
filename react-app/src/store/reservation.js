@@ -79,7 +79,7 @@ export const cancelReservationThunk = (id) => async dispatch => {
 }
 
 export const editReservationThunk = (editReservation) => async dispatch => {
-    const { id, startDate, endDate} = editReservation
+    const { id, startDate, endDate } = editReservation
 
     const response = await fetch(`/api/reservations/${id}`, {
         method: "PATCH",
@@ -114,11 +114,11 @@ const reservationReducer = (reservations = initialState, action) => {
             }
             return newReservations;
         case CREATE_RESERVATION:
-            return {...reservations, [action.payload.id]: action.payload}
+            return { ...reservations, [action.payload.id]: action.payload }
         case CANCEL_RESERVATION:
             return reservations;
         case EDIT_RESERVATION:
-            return {...reservations, [action.payload.id]: action.payload}
+            return { ...reservations, [action.payload.id]: action.payload }
         default:
             return reservations;
     }

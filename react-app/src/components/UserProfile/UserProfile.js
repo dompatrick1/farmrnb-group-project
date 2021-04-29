@@ -1,22 +1,17 @@
+import "./UserProfile.css"
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getUserReservationsThunk } from "../../store/reservation"
+import { useDispatch } from 'react-redux'
 
-function User() {
-  const [user, setUser] = useState({});
-  // Notice we use useParams here instead of getting the params
-  // From props.
+function UserProfile() {
   const { userId } = useParams();
+  const dispatch = useDispatch()
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    if (!userId) {
-      return
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
+    dispatch(getUserReservationsThunk(userId))
+  }, [dispatch])
 
   if (!user) {
     return null;
@@ -33,7 +28,8 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
+      <h2>Hiiiiiiiiiiiiiiiiiii</h2>
     </ul>
   );
 }
-export default User;
+export default UserProfile
