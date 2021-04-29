@@ -30,9 +30,9 @@ function CreateReservationForm() {
 
     const farmId = parseInt(id)
 
-    useEffect(() => {
-        dispatch(getFarmReservationsThunk(id))
-    }, [dispatch, id])
+    // useEffect(() => {
+    //     dispatch(getFarmReservationsThunk(id))
+    // }, [dispatch, id])
 
 
     if (sessionUser) {
