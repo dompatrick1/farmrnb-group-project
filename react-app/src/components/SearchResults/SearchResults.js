@@ -10,12 +10,13 @@ const SearchResults = (props) => {
   const dispatch = useDispatch()
   const [selected, setSelected] = useState({})
   let location = useLocation()
-  const locations = [
-    {
-      name: "Glorie Farms Winery",
-      location: { lat: 41.61781002082245, lng: -74.01261700215811 }
-    }
-  ]
+  
+  // const locations = [
+  //   {
+  //     name: "Glorie Farms Winery",
+  //     location: { lat: 41.61781002082245, lng: -74.01261700215811 }
+  //   }
+  // ]
 
   const onSelect = (item) => {
     setSelected(item)
@@ -28,6 +29,18 @@ const SearchResults = (props) => {
     return (farm.state === stateVal)
   })
 
+  const locations = searchedFarms.map(farm => {
+    return {
+      id: farm.id,
+      name: farm.name,
+      location: {
+        lat: farm.latitude,
+        lng: farm.longitude
+      }
+    }
+  })
+
+  console.log("locations", locations)
 
 
   const mapStyles = {
@@ -61,18 +74,27 @@ const SearchResults = (props) => {
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={5}
-          center={defaultCenter}
+          center={locations.length ?
+            locations[0].location
+          : defaultCenter}
         >
-          <Marker key={locations[0].name} position={locations[0].location} onClick={() => onSelect(locations[0])} />
+          {locations.length ? 
+            locations.map(farm => {
+              return (
+                <Marker key={farm.name} position={farm.location} onClick={() => onSelect(farm)} />
+              )
+          })
+          : null}
+         
           {
             selected.location &&
             (
               <InfoWindow
-                position={locations[0].location}
+                position={selected.location}
                 clickable={true}
                 onCloseClick={() => setSelected({})}
               >
-                <a href={`/farm/${searchedFarms[0].id}`}>{selected.name}</a>
+                <a href={`/farm/${selected.id}`}>{selected.name}</a>
               </InfoWindow>
             )
           }
