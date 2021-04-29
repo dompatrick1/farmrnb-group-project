@@ -30,8 +30,8 @@ const NavBar = () => {
     })
   }
 
-  function handleSubmit(event){
-
+  function handleSubmit(e){
+    setLocation("")
   }
 
 
@@ -61,7 +61,7 @@ const NavBar = () => {
                          state : {
                           val : val
                          },
-                        }}>
+                        }} onClick={e => handleSubmit(e)}>
                           {val}
                       </NavLink>
                     </div>
