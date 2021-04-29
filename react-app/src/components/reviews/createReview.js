@@ -36,7 +36,7 @@ function CreateReviewForm() {
                 if (data && data.errors) setErrors(data.errors)
 
             })
-        history.push(`/farm/${farmId}`)
+        // history.push(`/farm/${farmId}`)
     }
 
     return (

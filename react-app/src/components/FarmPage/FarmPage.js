@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import CreateReviewForm from "../reviews/createReview"
 import CreateReservationForm from "../reservations/createReservation"
+import FarmReviews from "../reviews/reviewBox"
 
 function Farm() {
     const dispatch = useDispatch()
@@ -38,6 +39,7 @@ function Farm() {
             </div>
             <div>
                 <CreateReviewForm />
+                <FarmReviews/>
             </div>
             <div>
                 <CreateReservationForm />

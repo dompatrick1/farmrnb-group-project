@@ -34,7 +34,7 @@ const editReview = (reviewEdit) => ({
 // ****************** THUNKS ******************** //
 
 export const getFarmReviewsThunk = (id) => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${id}`)
+  const response = await fetch(`/api/reviews/farm/${id}`)
   if (!response.ok) {
     throw response
   }
@@ -106,14 +106,14 @@ const reviewReducer = (reviews = initialState, action) => {
     case GET_FARM_REVIEWS:
       reviewsPayload = action.payload
       newReviews = {};
-      for (const review of reviewsPayload) {
+      for (const review of reviewsPayload.reviews) {
         newReviews[review.id] = review
       }
       return newReviews;
     case GET_USER_REVIEWS:
       reviewsPayload = action.payload
       newReviews = {};
-      for (const review of reviewsPayload) {
+      for (const review of reviewsPayload.reviews) {
         newReviews[review.id] = review
       }
       return newReviews;
