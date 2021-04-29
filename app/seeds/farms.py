@@ -6,7 +6,8 @@ def seed_farms():
         Farm(
             name="Glorie Farm Winery", type="Winery", job="Harvesting grapes and bottling wine.",
             description="Glorie Farms provides the highest quality Hudson Valley fruit to markets, csa, and farm stands across the Hudson Valley including Westchester, Rockland, and Fairfield County. We are looking for farm hands to work in the orchard and vineyard",
-            address="40 Mountain Rd, Marlboro, NY 12542", state="New York"),
+            address="40 Mountain Rd, Marlboro, NY 12542", state="New York",
+            latitude=41.61781002082245, longitude=-74.01261700215811),
         Farm(
             name="Varick Winery", type="Winery", job="Harvesting grapes, bottling wine, and working in the shop.",
             description="Varick Winery is located in Romulus, New York along the Northwest side of Cayuga Lake. We are a proud member of the Cayuga Lake Wine Trail, with a close proximity to our neighboring wineries, breweries, cideries, and distilleries along both Cayuga and Seneca Lake.",
