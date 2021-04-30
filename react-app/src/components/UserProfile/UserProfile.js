@@ -9,6 +9,8 @@ function UserProfile() {
   const dispatch = useDispatch()
   const [user, setUser] = useState({});
   const userReservations = Object.values(useSelector(state => state.reservations))
+  const sessionUser = useSelector(state => state.session.user);
+  console.log("sessionUser ===========", sessionUser);
 
 
 
@@ -26,10 +28,10 @@ function UserProfile() {
     <div className="parentContainer">
       <ul>
         <li>
-          <strong>Username {user.username} </strong> {user.username}
+          <strong>Username: {sessionUser.username} </strong>
         </li>
         <li>
-          <strong>Email</strong> {user.email}
+          <strong>Email: {sessionUser.email}</strong>
         </li>
       </ul>
 
@@ -41,8 +43,8 @@ function UserProfile() {
           const end = new Date(reservation.endDate).toLocaleDateString(undefined, options)
           return (
             <Link to={`/farm/${reservation.farmId}`} key={reservation.id} className="reservationLink">
-              <p>{start}</p>
-              <p>{end}</p>
+              <p>Starts on: {start}</p>
+              <p>Ends on:{end}</p>
             </Link>
           )
         })}
