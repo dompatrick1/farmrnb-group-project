@@ -67,6 +67,19 @@ const NavBar = () => {
     }
   }
 
+  function hideProfile() {
+    if (user) {
+      return (
+        <li>
+          <NavLink to={`/user/${userId}`} exact={true} activeClassName="active">
+            Profile
+          </NavLink>
+        </li>
+      )
+    }
+  }
+
+
   //****************************************************************** */
   return (
     <nav>
@@ -76,11 +89,7 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink to={`/user/${userId}`} exact={true} activeClassName="active">
-            Profile
-          </NavLink>
-        </li>
+        {hideProfile()}
         <li>
           <form onSubmit={(e) => handleSubmit(e)}>
             <input
@@ -109,11 +118,6 @@ const NavBar = () => {
           </form>
         </li>
         {hideLoginSignUp()}
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
         {isLoggedIn()}
       </ul>
     </nav>
