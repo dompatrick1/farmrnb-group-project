@@ -3,22 +3,22 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getUserReservationsThunk } from "../../store/reservation"
 import { useDispatch, useSelector } from 'react-redux'
+import { getFarmsThunk } from '../../store/farm'
 
 function UserProfile() {
   const { userId } = useParams();
   const dispatch = useDispatch()
   const [user, setUser] = useState({});
   const userReservations = Object.values(useSelector(state => state.reservations))
+  const farms = Object.values(useSelector(state => state.farms))
   const sessionUser = useSelector(state => state.session.user);
-  console.log("sessionUser ===========", sessionUser);
 
-
+  console.log("farms======== Array?", farms)
 
   useEffect(() => {
+    dispatch(getFarmsThunk())
     dispatch(getUserReservationsThunk(userId))
   }, [dispatch, userId])
-
-  console.log("===========", userReservations)
 
   if (!user) {
     return null;
@@ -35,21 +35,35 @@ function UserProfile() {
         </li>
       </ul>
 
-      <div className="userReservationContainer">
-        <p>Your upcoming visits!</p>
-        {userReservations.map(reservation => {
+      <div className="userProfileVisitText">
+        <h2>Your upcoming visits!</h2>
+      </div>
+
+      <div className="userProfileReservationContainer">
+
+        {farms.length ? userReservations.map(reservation => {
           const options = { year: "numeric", month: "long", day: "numeric" }
           const start = new Date(reservation.startDate).toLocaleDateString(undefined, options)
           const end = new Date(reservation.endDate).toLocaleDateString(undefined, options)
+          const farmId = reservation.farmId
+          console.log("farmId=============", farms[0].name)
+          // console.log(farms.farmId.name)
+          // const farmName = farms.farmId.name
           return (
-            <Link to={`/farm/${reservation.farmId}`} key={reservation.id} className="reservationLink">
-              <p>Starts on: {start}</p>
-              <p>Ends on:{end}</p>
-            </Link>
+            <div className="userProfileReservationDiv" key={reservation.id}>
+              <Link to={`/farm/${reservation.farmId}`} className="reservationLink">
+                <p>Starts on: {start} at {farms[farmId - 1].name}</p>
+                <p>Ends on:{end}</p>
+              </Link>
+            </div>
           )
-        })}
+        }) : null}
       </div>
     </div>
   );
 }
 export default UserProfile
+
+// const farms =
+// const farmId = reservation.farmId
+// const farmName
