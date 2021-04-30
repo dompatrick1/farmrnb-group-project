@@ -109,54 +109,56 @@ const SearchResults = (props) => {
 
   console.log("$$$$$$", locations)
   if (locations) {
-  return (
-    <div className="searchParent">
+    return (
+      <div className="searchParent">
 
-      <LoadScript
-        googleMapsApiKey='AIzaSyAiEd7_jUnGgEA1n3RFdoJ1WnrCyDApSX4'>
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={5}
-          center={locations.length ?
-            locations[0].location
-          : defaultCenter}
-        >
-          {locations.length ?
-            locations.map(farm => {
-              console.log("^^^^^^^^^^", farm)
-              return (
-                <Marker key={farm.name} position={farm.location} onClick={() => onSelect(farm)} />
-              )
-          })
-          : null}
+        <LoadScript
+          googleMapsApiKey='AIzaSyAiEd7_jUnGgEA1n3RFdoJ1WnrCyDApSX4'>
+          <GoogleMap
+            mapContainerStyle={mapStyles}
+            zoom={5}
+            center={locations[0] ?
+              locations[0].location
+            : defaultCenter}
+          >
+            {locations ?
+              locations.map(farm => {
+                console.log("^^^^^^^^^^", farm)
+                if (farm) {
+                  return (
+                    <Marker key={farm.name} position={farm.location} onClick={() => onSelect(farm)} />
+                  )
+                }
+            })
+            : null}
 
-          {
-            selected.location &&
-            (
-              <InfoWindow
-                position={selected.location}
-                clickable={true}
-                onCloseClick={() => setSelected({})}
-              >
-                <div className="mapSelected">
-                  <div>
-                    <a href={`/farm/${selected.id}`}>{selected.name}</a>
-                    <p>{selected.type}</p>
-                    <p>{selected.address}</p>
+            {
+              selected.location &&
+              (
+                <InfoWindow
+                  position={selected.location}
+                  clickable={true}
+                  onCloseClick={() => setSelected({})}
+                >
+                  <div className="mapSelected">
+                    <div>
+                      <a href={`/farm/${selected.id}`}>{selected.name}</a>
+                      <p>{selected.type}</p>
+                      <p>{selected.address}</p>
+                    </div>
+                    <img src={selected.image} alt={selected.name} className="mapImage"/>
                   </div>
-                  <img src={selected.image} alt={selected.name} className="mapImage"/>
-                </div>
-              </InfoWindow>
-            )
-          }
-        </GoogleMap>
+                </InfoWindow>
+              )
+            }
+          </GoogleMap>
 
-      </LoadScript>
+        </LoadScript>
 
-      <div className="searchedList">
-        {resultsBox}
+        <div className="searchedList">
+          {resultsBox}
+        </div>
       </div>
-    </div>
-  )} else return null
+    )} else return null
 }
 export default SearchResults;
