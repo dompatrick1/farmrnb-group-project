@@ -14,9 +14,6 @@ function CreateReservationForm() {
     const startDateArray = [];
     const endDateArray = [];
 
-    console.log("Start", startDateArray)
-    console.log("End", endDateArray)
-
     const reservationArray = reservations.map(reservation => {
         startDateArray.push(reservation.startDate)
         endDateArray.push(reservation.endDate)
@@ -30,11 +27,6 @@ function CreateReservationForm() {
     const [errors, setErrors] = useState([])
 
     const farmId = parseInt(id)
-
-    // useEffect(() => {
-    //     dispatch(getFarmReservationsThunk(id))
-    // }, [dispatch, id])
-
 
     if (sessionUser) {
         userId = sessionUser.id
@@ -54,7 +46,10 @@ function CreateReservationForm() {
             endDate
         }
 
+        setStartDate("")
+        setEndDate("")
         dispatch(createReservationThunk(payload))
+        window.alert('Reservation successfully made.')
         history.push(`/farm/${farmId}`)
     }
 
