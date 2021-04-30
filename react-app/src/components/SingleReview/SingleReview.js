@@ -51,7 +51,7 @@ function SingleReview(props){
 
     let reviewBox = (
             <div>
-                {review ?
+                {props.review ?
                     <div>
                         <p>{props.review.review}</p>
                         <p>{props.review.rating}</p>
