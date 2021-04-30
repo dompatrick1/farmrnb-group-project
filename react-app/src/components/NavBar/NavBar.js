@@ -37,8 +37,50 @@ const NavBar = () => {
   function handleSubmit(e) {
     setLocation("")
   }
+  // ********************************************************** */
+  function isLoggedIn() {
+    if (user) {
+      return (
+        <li>
+          <LogoutButton />
+        </li>
+      )
+    }
+  }
+
+  function hideLoginSignUp() {
+    if (!user) {
+      return (
+        <div>
+          <li>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+          </li>
+        </div>
+      )
+    }
+  }
+
+  function hideProfile() {
+    if (user) {
+      return (
+        <li>
+          <NavLink to={`/user/${userId}`} exact={true} activeClassName="active">
+            Profile
+          </NavLink>
+        </li>
+      )
+    }
+  }
 
 
+  //****************************************************************** */
   return (
     <nav>
       <ul className="parent">
@@ -47,11 +89,7 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink to={`/user/${userId}`} exact={true} activeClassName="active">
-            Profile
-          </NavLink>
-        </li>
+        {hideProfile()}
         <li>
           <form onSubmit={(e) => handleSubmit(e)}>
             <input
@@ -79,26 +117,8 @@ const NavBar = () => {
               : null}
           </form>
         </li>
-        <div>
-          <li>
-            <NavLink to="/login" exact={true} activeClassName="active">
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink>
-          </li>
-        </div>
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
+        {hideLoginSignUp()}
+        {isLoggedIn()}
       </ul>
     </nav>
   );
