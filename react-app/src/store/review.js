@@ -83,7 +83,7 @@ export const deleteReviewThunk = (id) => async (dispatch) => {
 }
 
 export const editReviewThunk = (reviewData) => async (dispatch) => {
-  const { id, review, rating } = reviewData
+  const { id, review, rating, userId, farmId } = reviewData
 
   const response = await fetch(`/api/reviews/farm/${id}`, {
     method: "PATCH",
@@ -91,7 +91,7 @@ export const editReviewThunk = (reviewData) => async (dispatch) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      review, rating
+      review, rating, userId, farmId
     })
   })
   const reviewEdit = await response.json();
@@ -125,7 +125,7 @@ const reviewReducer = (reviews = initialState, action) => {
     case DELETE_REVIEW:
       return reviews
     case EDIT_REVIEW:
-      return { ...reviews, [action.review.id]: action.review }
+      return { ...reviews, [action.payload.id]: action.payload }
 
     default:
       return reviews

@@ -45,16 +45,16 @@ function SingleReview(props){
             //     if (data && data.errors) setErrors(data.errors)
 
             // })
-        
+
             setEditing(false)
     }
-    
+
     let reviewBox = (
             <div>
                 {review ?
                     <div>
-                        <p>{review}</p>
-                        <p>{rating}</p>
+                        <p>{props.review.review}</p>
+                        <p>{props.review.rating}</p>
                     </div>
                 : null}
                 {sessionUser && props.review.userId === sessionUser.id ?
@@ -80,7 +80,7 @@ function SingleReview(props){
             />
             <select
                 onChange={e => setRating(e.target.value)}
-                value={props.review.rating}
+                value={rating}
             >
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -94,7 +94,7 @@ function SingleReview(props){
 
     return (
         <div>
-            {editing ? 
+            {editing ?
                 <div>
                     {editForm}
                 </div>
