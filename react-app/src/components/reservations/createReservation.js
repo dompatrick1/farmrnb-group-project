@@ -65,12 +65,14 @@ function CreateReservationForm() {
             <form onSubmit={handleSubmit}>
                 <div className="farmPageReservationContainer">
                     <h2>Reserve Your Stay</h2>
+                    <label>Start Date</label>
                     <input
                         type="date"
                         value={startDate}
                         required
                         onChange={e => setStartDate(e.target.value)}
                     />
+                    <label>End Date</label>
                     <input
                         type="date"
                         value={endDate}
