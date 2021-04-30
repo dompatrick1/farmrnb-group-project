@@ -1,5 +1,15 @@
-.userReservationContainer {
+.userProfileReservationContainer {
   display: flex;
   flex-direction: column;
+}
 
+
+ .userProfileVisitText {
+  text-align: center;
+}
+
+.userProfileReservationDiv {
+  border: 1px solid;
+  margin-top: 5px;
+  padding-left: 2%;
 }
