@@ -7,6 +7,8 @@ import CreateReviewForm from "../reviews/createReview"
 import CreateReservationForm from "../reservations/createReservation"
 import FarmReviews from "../reviews/reviewBox"
 
+import './FarmPage.css'
+
 function Farm() {
     const dispatch = useDispatch()
     const farms = useSelector(state => state.farms);

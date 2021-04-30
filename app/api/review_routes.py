@@ -35,6 +35,18 @@ def create_review(id):
         return newReview.to_dict()
     return 'Bad Data'
 
+@review_routes.route('/farm/<int:id>', methods=["PATCH"])
+def edit_review(id):
+    form = NewReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review.query.get(id)
+        form.populate_obj(review)
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict()
+    return 'Bad Data'
+
 @review_routes.route('/<int:id>', methods=["DELETE"])
 def delete_review(id):
     review = Review.query.get(id)
