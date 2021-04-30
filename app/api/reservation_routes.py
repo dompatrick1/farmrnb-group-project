@@ -33,3 +33,10 @@ def create_reservation(id):
         db.session.commit()
         return newReservation.to_dict()
     return 'Bad Data'
+
+@reservation_routes.route('/<int:id>', methods=["DELETE"])
+def delete_reservation(id):
+    reservation = Reservation.query.get(id)
+    db.session.delete(reservation)
+    db.session.commit()
+    return {}

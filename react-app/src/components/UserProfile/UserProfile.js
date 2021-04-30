@@ -1,7 +1,7 @@
 import "./UserProfile.css"
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getUserReservationsThunk } from "../../store/reservation"
+import { getUserReservationsThunk, cancelReservationThunk } from "../../store/reservation"
 import { useDispatch, useSelector } from 'react-redux'
 import { getFarmsThunk } from '../../store/farm'
 
@@ -13,8 +13,6 @@ function UserProfile() {
   const farms = Object.values(useSelector(state => state.farms))
   const sessionUser = useSelector(state => state.session.user);
 
-  console.log("farms======== Array?", farms)
-
   useEffect(() => {
     dispatch(getFarmsThunk())
     dispatch(getUserReservationsThunk(userId))
@@ -23,6 +21,12 @@ function UserProfile() {
   if (!user) {
     return null;
   }
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault()
+    await dispatch(cancelReservationThunk(id))
+    dispatch(getUserReservationsThunk(userId))
+}
 
   return (
     <div className="parentContainer">
@@ -54,6 +58,7 @@ function UserProfile() {
               <Link to={`/farm/${reservation.farmId}`} className="reservationLink">
                 <p>Starts on: {start} at {farms[farmId - 1].name}</p>
                 <p>Ends on:{end}</p>
+                <button onClick={(e) => handleDelete(e, reservation.id)}>Cancel Reservation</button>
               </Link>
             </div>
           )
