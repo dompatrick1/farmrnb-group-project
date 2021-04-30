@@ -9,16 +9,20 @@ import './navbar.css'
 const NavBar = () => {
   // const dispatch = useDispatch()
   const farms = useSelector(state => state.farms)
-  const userId = useSelector(state => state.session.user.id)
+  const user = useSelector(state => state.session.user)
   const farmsArray = Object.values(farms)
   const [location, setLocation] = useState("")
   // const [type, setType] = useState("")
 
   const uniqueArray = []
+  let userId;
 
   // useEffect(() => {
   //   dispatch(getFarmsThunk())
   // }, [dispatch])
+  if (user) {
+    userId = user.id
+  }
 
   if (location.length) {
     farmsArray.filter((val) => {
