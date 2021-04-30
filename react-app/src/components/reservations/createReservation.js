@@ -2,6 +2,7 @@ import {createReservationThunk, getFarmReservationsThunk} from '../../store/rese
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
+import "../FarmPage/FarmPage.css"
 
 function CreateReservationForm() {
     const dispatch = useDispatch()
@@ -60,23 +61,26 @@ function CreateReservationForm() {
     let today = new Date().toLocaleDateString()
 
     return (
-        <>
+        <div className="reservationForm">
             <form onSubmit={handleSubmit}>
-                <input
-                    type="date"
-                    value={startDate}
-                    required
-                    onChange={e => setStartDate(e.target.value)}
-                />
-                <input
-                    type="date"
-                    value={endDate}
-                    required
-                    onChange={e => setEndDate(e.target.value)}
-                />
-                <button type="submit">Submit</button>
+                <div className="farmPageReservationContainer">
+                    <h2>Reserve Your Stay</h2>
+                    <input
+                        type="date"
+                        value={startDate}
+                        required
+                        onChange={e => setStartDate(e.target.value)}
+                    />
+                    <input
+                        type="date"
+                        value={endDate}
+                        required
+                        onChange={e => setEndDate(e.target.value)}
+                    />
+                    <button type="submit">Submit</button>
+                </div>
             </form>
-        </>
+        </div>
     )
 }
 
