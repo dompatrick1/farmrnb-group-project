@@ -37,8 +37,37 @@ const NavBar = () => {
   function handleSubmit(e) {
     setLocation("")
   }
+  // ********************************************************** */
+  function isLoggedIn() {
+    if (user) {
+      return (
+        <li>
+          <LogoutButton />
+        </li>
+      )
+    }
+  }
 
+  function hideLoginSignUp() {
+    if (!user) {
+      return (
+        <div>
+          <li>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+          </li>
+        </div>
+      )
+    }
+  }
 
+  //****************************************************************** */
   return (
     <nav>
       <ul className="parent">
@@ -79,26 +108,13 @@ const NavBar = () => {
               : null}
           </form>
         </li>
-        <div>
-          <li>
-            <NavLink to="/login" exact={true} activeClassName="active">
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink>
-          </li>
-        </div>
+        {hideLoginSignUp()}
         <li>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users
           </NavLink>
         </li>
-        <li>
-          <LogoutButton />
-        </li>
+        {isLoggedIn()}
       </ul>
     </nav>
   );
