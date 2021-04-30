@@ -1,0 +1,46 @@
+.loginBackground {
+    /* background-image: url('https://3dblkgx9k1v2mbijx40t52x6-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/CoverLandscape.jpg'); */
+    background-size: cover;
+    height: 100%;
+}
+
+.loginFormContainer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 160px;
+
+}
+
+.loginForm {
+    width: 250px;
+    background-color: #364547;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: rgb(216, 216, 216);
+}
+
+.loginForm p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.loginForm button {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: #2f5d62;
+    color: rgb(216, 216, 216);
+    border-radius: 5px;
+    width: 80px;
+    height: 25px;
+}
+
+.loginForm input {
+    border-radius: 20px;
+    width: 180px;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+
