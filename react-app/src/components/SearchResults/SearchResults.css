@@ -14,7 +14,23 @@
     justify-content: space-between;
 }
 
-/* .serachParent {
+.searchFarmLink {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; */
+    justify-content: space-between;
+}
+
+.searchFarmImage {
+    max-width: 200px;
+}
+
+.mapSelected {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+.mapImage {
+    width: 50%;
+    height: 50%;
+}

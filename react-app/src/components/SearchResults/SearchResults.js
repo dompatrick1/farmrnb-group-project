@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getFarmsThunk } from '../../store/farm'
+import { getImagesThunk } from '../../store/image'
 import { useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
@@ -7,16 +8,10 @@ import './SearchResults.css'
 
 const SearchResults = (props) => {
   const farms = Object.values(useSelector(state => state.farms))
+  const images = Object.values(useSelector(state => state.images))
   const dispatch = useDispatch()
   const [selected, setSelected] = useState({})
   let location = useLocation()
-  
-  // const locations = [
-  //   {
-  //     name: "Glorie Farms Winery",
-  //     location: { lat: 41.61781002082245, lng: -74.01261700215811 }
-  //   }
-  // ]
 
   const onSelect = (item) => {
     setSelected(item)
@@ -29,10 +24,19 @@ const SearchResults = (props) => {
     return (farm.state === stateVal)
   })
 
-  const locations = searchedFarms.map(farm => {
+  let locations
+  let resultsBox
+
+  if(images.length){
+  locations = searchedFarms.map(farm => {
+    const farmImage = images.filter(image => image.farmId === farm.id)[0]
+    console.log('Here', farm)
     return {
       id: farm.id,
       name: farm.name,
+      type: farm.type,
+      address: farm.address,
+      image: farmImage.image,
       location: {
         lat: farm.latitude,
         lng: farm.longitude
@@ -40,8 +44,26 @@ const SearchResults = (props) => {
     }
   })
 
-  console.log("locations", locations)
-
+  resultsBox = searchedFarms.map(farm => {
+    const farmImage = images.filter(image => image.farmId === farm.id)[1]
+    return (
+        <Link to={`/farm/${farm.id}`} key={farm.id} className="searchFarmLink">
+          <div>
+            <img src={farmImage.image} className="searchFarmImage"/>
+          </div>
+          <div>
+            <h2>{farm.name}</h2>
+            <p>{farm.address}</p>
+            <p>{farm.description}</p>
+            <p>{farm.type}</p>
+          </div>
+        </Link>
+    )
+  })
+} else {
+  locations = []
+  resultsBox = []
+}
 
   const mapStyles = {
     height: "100vh",
@@ -52,17 +74,26 @@ const SearchResults = (props) => {
     lat: 42.434719, lng: -83.985001
   }
 
-  const resultsBox = searchedFarms.map(farm => {
-    return (
-      <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
-        <p>{farm.name}</p>
-        <p>{farm.type}</p>
-      </Link>
-    )
-  })
+  // const resultsBox = searchedFarms.map(farm => {
+  //   const farmImage = images.filter(image => image.farmId === farm.id)[1]
+  //   return (
+  //       <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
+  //         <div>
+  //           <h2>{farm.name}</h2>
+  //           <p>{farm.address}</p>
+  //           <p>{farm.description}</p>
+  //           <p>{farm.type}</p>
+  //         </div>
+  //         <div>
+  //           <img src={farmImage.image} />
+  //         </div>
+  //       </Link>
+  //   )
+  // })
 
-  useEffect(() => {
-    dispatch(getFarmsThunk())
+  useEffect(async() => {
+    await dispatch(getFarmsThunk())
+    await dispatch(getImagesThunk())
   }, [dispatch])
 
 
@@ -94,7 +125,14 @@ const SearchResults = (props) => {
                 clickable={true}
                 onCloseClick={() => setSelected({})}
               >
-                <a href={`/farm/${selected.id}`}>{selected.name}</a>
+                <div className="mapSelected">
+                  <div>
+                    <a href={`/farm/${selected.id}`}>{selected.name}</a>
+                    <p>{selected.type}</p>
+                    <p>{selected.address}</p>
+                  </div>
+                  <img src={selected.image} alt={selected.name} className="mapImage"/>
+                </div>
               </InfoWindow>
             )
           }
