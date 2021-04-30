@@ -82,11 +82,14 @@ export const deleteReviewThunk = (id) => async (dispatch) => {
   return null;
 }
 
-export const editReviewThunk = (reviewEdit) => async (dispatch) => {
-  const { id, review, rating } = reviewEdit
+export const editReviewThunk = (reviewData) => async (dispatch) => {
+  const { id, review, rating } = reviewData
 
-  const response = await fetch(`/api/reviews/${id}`, {
+  const response = await fetch(`/api/reviews/farm/${id}`, {
     method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       review, rating
     })
