@@ -84,11 +84,11 @@ const NavBar = () => {
   return (
     <nav>
       <ul className="parent">
-        <li>
+        <div>
           <NavLink to="/" exact={true} activeClassName="active">
             Home
           </NavLink>
-        </li>
+        </div>
         {hideProfile()}
         <li>
           <form onSubmit={(e) => handleSubmit(e)}>

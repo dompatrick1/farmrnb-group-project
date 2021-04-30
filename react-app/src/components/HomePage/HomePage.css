@@ -1,0 +1,16 @@
+.homeBanner {
+    width: 100%;
+}
+
+.bannerParent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.welcomeText {
+    position: absolute;
+    top: 30px;
+    font-size: 6em;
+    color: #2f5d62;
+}

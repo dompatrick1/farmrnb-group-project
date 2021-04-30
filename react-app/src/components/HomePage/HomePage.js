@@ -55,9 +55,11 @@ function Home() {
     })
 
   return (
-    <>
-
-      <h1>This is rendering Homepage</h1>
+    <div>
+      <div  className="bannerParent">
+        <h1 className="welcomeText">Welcome to FarmRnB</h1>
+        <img src='./farmrnb_banner.jpeg' className="homeBanner"/>
+      </div>
       {farms &&
       <div>
         <div>{wineryElement}</div>
@@ -66,7 +68,7 @@ function Home() {
         <div>{hempElement}</div>
       </div>
       }
-    </>
+    </div>
   )
 }
 
