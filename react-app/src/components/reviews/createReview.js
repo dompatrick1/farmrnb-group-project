@@ -29,7 +29,7 @@ function CreateReviewForm() {
             userId,
             farmId
         }
-
+        setReview('')
         dispatch(createReviewThunk(payload))
             .catch(async (res) => {
                 const data = await res.json()

@@ -11,8 +11,8 @@ function SingleReview(props){
     const dispatch = useDispatch()
     const [editing, setEditing] = useState(false)
     const [errors, setErrors] = useState([])
-    const [review, setReview] = useState(props.review.review)
-    const [rating, setRating] = useState(props.review.rating)
+    const [review, setReview] = useState()
+    const [rating, setRating] = useState()
     const sessionUser = useSelector(state => state.session.user)
 
     const handleDelete = async (e, review) => {
@@ -75,7 +75,7 @@ function SingleReview(props){
                 type="text"
                 placeholder={props.review.review}
                 required
-                value={review}
+                value={props.review.review}
                 onChange={e => setReview(e.target.value)}
             />
             <select
