@@ -2,7 +2,7 @@
     background-color: #ffe268;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: center; */
     align-items: center;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
@@ -10,7 +10,6 @@
     z-index: 100;
     width: 100%;
     height: 70px;
-    margin: 0;
     margin-top: 0;
     border-bottom: 2px solid #364547;
 }
@@ -30,14 +29,68 @@
     text-decoration: none;
 }
 
+.home-link {
+    text-decoration: none;
+    color: #2F5D62;
+    font-size: 60px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 3px;
+    margin-left: 0px;
+    margin-right: 40px;
+}
+
 .navbar-link:hover {
     box-shadow: inset 300px 0 0 0 #364547;
 	color: #ffe268;
 	cursor: pointer;
 }
 
-/* .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  } */
+.searchBar {
+    position: absolute;
+    align-content: center;
+}
+
+.searchBarContainer {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.searchBar input {
+    border-radius: 20px;
+    width: 120%;
+    height: 30px;
+    position:relative;
+    margin-left: 50px;
+    text-indent: 20px;
+    font-size: 20px;
+    background-color: rgb(236, 236, 236);
+}
+
+.searchBar input[type="text"]:focus {
+    outline:none;
+}
+
+.isLoggedIn {
+    display: flex;
+    margin-left: 730px;
+}
+
+.searchedList {
+    padding: 10px;
+    margin-left: 70px;
+    background-color: rgb(233, 233, 233);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchedList li {
+    text-decoration: none;
+    color: inherit;
+}
