@@ -9,6 +9,8 @@ import FarmReviews from "../reviews/reviewBox"
 
 import './FarmPage.css'
 
+const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
+
 function Farm() {
     const dispatch = useDispatch()
     const farms = useSelector(state => state.farms);
@@ -62,7 +64,7 @@ function Farm() {
                             <div className="farmPageImageContainer">
                                 <button className="imageSelect" onClick={e => prevImage(e)}>{'<'}</button>
                                 {imagesArray.length ?
-                                    <img className="imageCarousel" key={imagesArray[picture].id} src={imagesArray[picture].image} alt={imagesArray[picture].image}/>
+                                    <img className="imageCarousel" key={imagesArray[picture].id} src={`${IMAGE_FOLDER}${imagesArray[picture].image}`} alt={imagesArray[picture].image}/>
                                 : null}
                                 <button className="imageSelect" onClick={e => nextImage(e)}>{'>'}</button>
                             </div>
