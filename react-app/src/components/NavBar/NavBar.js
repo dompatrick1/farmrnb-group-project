@@ -51,14 +51,14 @@ const NavBar = () => {
   function hideLoginSignUp() {
     if (!user) {
       return (
-        <div>
+        <div className="unlogged-links-div">
           <li>
-            <NavLink to="/login" exact={true} activeClassName="active">
+            <NavLink to="/login" exact={true} activeClassName="active" className="unlogged-links">
               Login
             </NavLink>
           </li>
           <li>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
+            <NavLink to="/sign-up" exact={true} activeClassName="active" className="unlogged-links">
               Sign Up
             </NavLink>
           </li>
