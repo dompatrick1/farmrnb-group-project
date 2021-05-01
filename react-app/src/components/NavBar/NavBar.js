@@ -71,7 +71,7 @@ const NavBar = () => {
     if (user) {
       return (
         <li>
-          <NavLink to={`/user/${userId}`} exact={true} activeClassName="active">
+          <NavLink to={`/user/${userId}`} exact={true} activeClassName="active" className="navbar-link">
             Profile
           </NavLink>
         </li>
@@ -85,7 +85,7 @@ const NavBar = () => {
     <nav>
       <ul className="parent">
         <div>
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/" exact={true} activeClassName="active" className="navbar-link">
             Home
           </NavLink>
         </div>
