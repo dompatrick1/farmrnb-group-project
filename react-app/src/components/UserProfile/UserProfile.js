@@ -26,11 +26,11 @@ function UserProfile() {
     e.preventDefault()
     await dispatch(cancelReservationThunk(id))
     dispatch(getUserReservationsThunk(userId))
-}
+  }
 
   return (
-    <div className="parentContainer">
-      <ul>
+    <div className="parent-container">
+      <ul className="user-info">
         <li>
           <strong>Username: {sessionUser.username} </strong>
         </li>
@@ -40,7 +40,7 @@ function UserProfile() {
       </ul>
 
       <div className="userProfileVisitText">
-        <h2>Your upcoming visits!</h2>
+        <h2>Your Upcoming Visits!</h2>
       </div>
 
       <div className="userProfileReservationContainer">
