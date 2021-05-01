@@ -85,40 +85,44 @@ const NavBar = () => {
     <nav>
       <ul className="parent">
         <div>
-          <NavLink to="/" exact={true} activeClassName="active" className="navbar-link">
-            Home
+          <NavLink to="/" exact={true} activeClassName="active" className="home-link">
+            FarmRnB
           </NavLink>
         </div>
         {hideProfile()}
-        <li>
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <input
-              value={location}
-              type="text"
-              placeholder="Search by State..."
-              onChange={(e) => setLocation(e.target.value)}
-            />
-            {uniqueArray.length ?
-              uniqueArray.map((val, key) => {
-                console.log('UArray', uniqueArray)
-                return (
-                  <div key={key}>
-                    <NavLink to={{
-                      pathname: "/searchResults",
-                      state: {
-                        val: val
-                      },
-                    }} onClick={e => handleSubmit(e)}>
-                      {val}
-                    </NavLink>
-                  </div>
-                )
-              })
-              : null}
-          </form>
-        </li>
+        <div className="searchBarContainer">
+          <li>
+            <form className="searchBar" onSubmit={(e) => handleSubmit(e)}>
+              <input
+                value={location}
+                type="text"
+                placeholder="Search by State..."
+                onChange={(e) => setLocation(e.target.value)}
+              />
+              {uniqueArray.length ?
+                uniqueArray.map((val, key) => {
+                  console.log('UArray', uniqueArray)
+                  return (
+                    <div className="searchedList" key={key}>
+                      <NavLink to={{
+                        pathname: "/searchResults",
+                        state: {
+                          val: val
+                        },
+                      }} onClick={e => handleSubmit(e)}>
+                        {val}
+                      </NavLink>
+                    </div>
+                  )
+                })
+                : null}
+            </form>
+          </li>
+        </div>
         {hideLoginSignUp()}
-        {isLoggedIn()}
+        <div className="isLoggedIn">
+          {isLoggedIn()}
+        </div>
       </ul>
     </nav>
   );
