@@ -56,13 +56,16 @@ function UserProfile() {
           return (
             <div className="userProfileReservationDiv" key={reservation.id}>
               <Link to={`/farm/${reservation.farmId}`} className="reservationLink">
-                <p>Starts on: {start} at {farms[farmId - 1].name}</p>
-                <p>Ends on:{end}</p>
+                <p>Starts on:   {start} at {farms[farmId - 1].name}</p>
+                <p>Ends on:   {end}</p>
                 <button onClick={(e) => handleDelete(e, reservation.id)}>Cancel Reservation</button>
               </Link>
             </div>
           )
         }) : null}
+      </div>
+      <div className="up-background-image-container">
+        <img src="/userProfileBackground.jpg" className="up-background-image"></img>
       </div>
     </div>
   );
