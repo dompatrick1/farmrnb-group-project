@@ -14,7 +14,7 @@ const SearchResults = (props) => {
   let location = useLocation()
 
 
-  useEffect(async() => {
+  useEffect(async () => {
     dispatch(getFarmsThunk())
     dispatch(getImagesThunk())
   }, [dispatch])
@@ -33,35 +33,35 @@ const SearchResults = (props) => {
   let locations
   let resultsBox
 
-  if(images.length){
-  locations = searchedFarms.map(farm => {
-    const farmImage = images.filter(image => image.farmId === farm.id)[0]
-    console.log('Here', farm)
-    if (farmImage) {
-      return {
-        id: farm.id,
-        name: farm.name,
-        type: farm.type,
-        address: farm.address,
-        image: farmImage.image,
-        location: {
-          lat: farm.latitude,
-          lng: farm.longitude
+  if (images.length) {
+    locations = searchedFarms.map(farm => {
+      const farmImage = images.filter(image => image.farmId === farm.id)[0]
+      console.log('Here', farm)
+      if (farmImage) {
+        return {
+          id: farm.id,
+          name: farm.name,
+          type: farm.type,
+          address: farm.address,
+          image: farmImage.image,
+          location: {
+            lat: farm.latitude,
+            lng: farm.longitude
+          }
         }
+
       }
+    })
 
-    }
-  })
-
-  resultsBox = searchedFarms.map(farm => {
-    const farmImage = images.filter(image => image.farmId === farm.id)[1]
-    return (
+    resultsBox = searchedFarms.map(farm => {
+      const farmImage = images.filter(image => image.farmId === farm.id)[1]
+      return (
         <Link to={`/farm/${farm.id}`} key={farm.id} className="searchFarmLink">
           {farmImage ?
             <div>
-              <img src={farmImage.image} className="searchFarmImage"/>
+              <img src={farmImage.image} className="searchFarmImage" />
             </div>
-          : null}
+            : null}
           <div>
             <h2>{farm.name}</h2>
             <p>{farm.address}</p>
@@ -69,12 +69,12 @@ const SearchResults = (props) => {
             <p>{farm.type}</p>
           </div>
         </Link>
-    )
-  })
-} else {
-  locations = []
-  resultsBox = []
-}
+      )
+    })
+  } else {
+    locations = []
+    resultsBox = []
+  }
 
   const mapStyles = {
     height: "100vh",
@@ -119,7 +119,7 @@ const SearchResults = (props) => {
             zoom={5}
             center={locations[0] ?
               locations[0].location
-            : defaultCenter}
+              : defaultCenter}
           >
             {locations ?
               locations.map(farm => {
@@ -129,8 +129,8 @@ const SearchResults = (props) => {
                     <Marker key={farm.name} position={farm.location} onClick={() => onSelect(farm)} />
                   )
                 }
-            })
-            : null}
+              })
+              : null}
 
             {
               selected.location &&
@@ -146,7 +146,7 @@ const SearchResults = (props) => {
                       <p>{selected.type}</p>
                       <p>{selected.address}</p>
                     </div>
-                    <img src={selected.image} alt={selected.name} className="mapImage"/>
+                    <img src={selected.image} alt={selected.name} className="mapImage" />
                   </div>
                 </InfoWindow>
               )
@@ -159,6 +159,7 @@ const SearchResults = (props) => {
           {resultsBox}
         </div>
       </div>
-    )} else return null
+    )
+  } else return null
 }
 export default SearchResults;
