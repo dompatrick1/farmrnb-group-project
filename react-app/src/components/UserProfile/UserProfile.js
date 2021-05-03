@@ -16,6 +16,7 @@ function UserProfile() {
   useEffect(() => {
     dispatch(getFarmsThunk())
     dispatch(getUserReservationsThunk(userId))
+    window.scrollTo(0, 0)
   }, [dispatch, userId])
 
   if (!user) {

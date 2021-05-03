@@ -33,7 +33,6 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="loginBackground">
       <div className="loginFormContainer">
         <form className="loginForm" onSubmit={onLogin}>
           <div>
@@ -70,7 +69,6 @@ const LoginForm = () => {
           }}>Demo</button>
         </form>
       </div>
-    </div>
   );
 };
 

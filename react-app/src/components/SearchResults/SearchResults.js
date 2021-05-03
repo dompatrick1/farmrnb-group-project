@@ -17,6 +17,7 @@ const SearchResults = (props) => {
   useEffect(async() => {
     dispatch(getFarmsThunk())
     dispatch(getImagesThunk())
+    window.scrollTo(0, 0)
   }, [dispatch])
 
   const onSelect = (item) => {

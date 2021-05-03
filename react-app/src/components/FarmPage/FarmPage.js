@@ -26,6 +26,7 @@ function Farm() {
     useEffect(() => {
         dispatch(getFarmsThunk())
         dispatch(getFarmImagesThunk(id))
+        window.scrollTo(0, 0)
     }, [dispatch, id])
 
     // let i = 0
