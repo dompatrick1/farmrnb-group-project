@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    position:relative;
+    /* align-items: flex-end; */
+    bottom: 0;
+    justify-content: center;
+    background-color: #ffe268;
+    width: 100%;
+    border-top: 2px solid #364547;
+    word-spacing: 2px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+}

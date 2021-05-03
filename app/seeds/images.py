@@ -91,7 +91,7 @@ def seed_images():
             image='/NoBoundaries2.jpg', farmId=10
         ),
         Image(
-            image='/NoBoundaries3.jpg', farmId=10
+            image='/Noboundaries3.jpg', farmId=10
         ),
         Image(
             image='/temple1.png', farmId=11

@@ -10,6 +10,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import Farm from "./components/FarmPage/FarmPage"
 import Home from "./components/HomePage/HomePage"
 import SearchResults from "./components/SearchResults/SearchResults"
+import Footer from "./components/footer/footer"
 
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
@@ -65,6 +66,7 @@ function App() {
         </Route>
 
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
