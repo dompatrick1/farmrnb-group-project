@@ -41,28 +41,34 @@ function CreateReviewForm() {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form className="reviewFormInputs" onSubmit={handleSubmit}>
+                <h2>Review Your Stay</h2>
                 <ul>
                     {errors.map((error, index) => <li key={index}>{error}</li>)}
                 </ul>
-                <input
+                <textarea
                     type="text"
                     placeholder="Leave a review..."
                     required
                     value={review}
                     onChange={e => setReview(e.target.value)}
                 />
-                <select
-                    onChange={e => setRating(e.target.value)}
-                    value={rating}
-                >
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
-                </select>
-                <button type='submit'>Submit</button>
+                <div>
+                    <label>Rate your stay out of 5:</label>
+                        <select
+                            onChange={e => setRating(e.target.value)}
+                            value={rating}
+                        >
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                        </select>
+                </div>
+                {sessionUser ?
+                    <button type='submit'>Submit</button>
+                : <p>Login to leave a review</p>}
             </form>
         </>
     )

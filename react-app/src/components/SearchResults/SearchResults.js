@@ -56,7 +56,7 @@ const SearchResults = (props) => {
   resultsBox = searchedFarms.map(farm => {
     const farmImage = images.filter(image => image.farmId === farm.id)[1]
     return (
-        <Link to={`/farm/${farm.id}`} key={farm.id} className="searchFarmLink">
+        <Link to={`/farm/${farm.id}`} key={farm.id} style={{ textDecoration: 'none' }} className="searchFarmLink">
           {farmImage ?
             <div>
               <img src={farmImage.image} className="searchFarmImage"/>
@@ -78,36 +78,13 @@ const SearchResults = (props) => {
 
   const mapStyles = {
     height: "100vh",
-    width: "50%"
+    width: "50%",
   };
 
   const defaultCenter = {
     lat: 42.434719, lng: -83.985001
   }
 
-  // const resultsBox = searchedFarms.map(farm => {
-  //   const farmImage = images.filter(image => image.farmId === farm.id)[1]
-  //   return (
-  //       <Link to={`/farm/${farm.id}`} key={farm.id} className="farmLink">
-  //         <div>
-  //           <h2>{farm.name}</h2>
-  //           <p>{farm.address}</p>
-  //           <p>{farm.description}</p>
-  //           <p>{farm.type}</p>
-  //         </div>
-  //         <div>
-  //           <img src={farmImage.image} />
-  //         </div>
-  //       </Link>
-  //   )
-  // })
-
-  // useEffect(async() => {
-  //   await dispatch(getFarmsThunk())
-  //   await dispatch(getImagesThunk())
-  // }, [dispatch])
-
-  console.log("$$$$$$", locations)
   if (locations) {
     return (
       <div className="searchParent">
@@ -123,7 +100,6 @@ const SearchResults = (props) => {
           >
             {locations ?
               locations.map(farm => {
-                console.log("^^^^^^^^^^", farm)
                 if (farm) {
                   return (
                     <Marker key={farm.name} position={farm.location} onClick={() => onSelect(farm)} />
@@ -155,7 +131,7 @@ const SearchResults = (props) => {
 
         </LoadScript>
 
-        <div className="searchedList">
+        <div className="searchedListSearch">
           {resultsBox}
         </div>
       </div>

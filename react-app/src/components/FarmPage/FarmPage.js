@@ -69,7 +69,9 @@ function Farm() {
                                 <button className="imageSelect" onClick={e => nextImage(e)}>{'>'}</button>
                             </div>
                             <div>
-                                <p>{farm.description}</p>
+                                <p className="farmDescriptionTitle">Farm Description:</p>
+                                <p className="farmDescription">{farm.description}</p>
+                                <p className="job">Job:</p>
                                 <p>{farm.job}</p>
                             </div>
                         </div>

@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFarmReviewsThunk, editReviewThunk, deleteReviewThunk} from '../../store/review'
+import "../reviews/reviews.css"
 
 function SingleReview(props){
-    console.log("PROPS", props)
-    console.log("PROPSREVIEW", props.review.review)
     const {id} = useParams()
-    console.log("ID------", id)
     const dispatch = useDispatch()
     const [editing, setEditing] = useState(false)
     const [errors, setErrors] = useState([])
     const [review, setReview] = useState()
     const [rating, setRating] = useState()
     const sessionUser = useSelector(state => state.session.user)
+
+    const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+
+let username;
+
+  let reviewUserName = users.map(user => {
+      if (user.id === props.review.userId) {
+          username = user.username
+      }
+  })
+
+  console.log(reviewUserName[1])
 
     const handleDelete = async (e, review) => {
         e.preventDefault()
@@ -24,6 +43,7 @@ function SingleReview(props){
     const handleEdit = async (e) => {
         e.preventDefault()
         setEditing(true)
+        setReview(props.review.review)
     }
 
     const handleSubmit = async (e) => {
@@ -48,22 +68,24 @@ function SingleReview(props){
 
             setEditing(false)
     }
-
+    let star = "⭐"
     let reviewBox = (
-            <div>
-                {props.review ?
+            <div className="singleReviewContainer">
+                {props.review && username ?
                     <div>
-                        <p>{props.review.review}</p>
-                        <p>{props.review.rating}</p>
+                        <p className="reviewUserName">{username}</p>
+                        <p className="reviewRating">Rating: {star.repeat(props.review.rating)}</p>
+                        <p className="reviewReview">{props.review.review}</p>
                     </div>
                 : null}
                 {sessionUser && props.review.userId === sessionUser.id ?
                     <div>
-                        <button onClick={(e) => handleDelete(e, review)}>X</button>
-                        <button onClick={(e) => handleEdit(e)}>Edit</button>
+                        <button className="deleteReview" onClick={(e) => handleDelete(e, review)}>X</button>
+                        <button className="editReview" onClick={(e) => handleEdit(e)}>Edit</button>
                     </div>
                 : null}
             </div>
+
     )
 
     let editForm = (
@@ -73,9 +95,9 @@ function SingleReview(props){
             </ul>
             <input
                 type="text"
-                placeholder={props.review.review}
+                placeholder={review}
                 required
-                value={props.review.review}
+                value={review}
                 onChange={e => setReview(e.target.value)}
             />
             <select
