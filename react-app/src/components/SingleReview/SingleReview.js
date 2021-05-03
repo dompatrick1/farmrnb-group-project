@@ -44,6 +44,7 @@ let username;
         e.preventDefault()
         setEditing(true)
         setReview(props.review.review)
+        setRating(props.review.rating)
     }
 
     const handleSubmit = async (e) => {
