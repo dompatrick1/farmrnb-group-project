@@ -74,7 +74,9 @@ function CreateReservationForm() {
                         required
                         onChange={e => setEndDate(e.target.value)}
                     />
-                    <button type="submit">Submit</button>
+                    {sessionUser ?
+                        <button type="submit">Submit</button>
+                    : <p>Login to reserve a stay</p>}
                 </div>
             </form>
         </div>

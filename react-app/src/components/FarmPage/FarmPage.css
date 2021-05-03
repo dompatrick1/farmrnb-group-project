@@ -5,6 +5,7 @@ body {
     height: 100%;
     margin-left: 0px;
     margin-top: 0px;
+    margin-bottom: 150px;
 }
 
 .farmPageContainer {
@@ -46,7 +47,7 @@ body {
 }
 
 .farmPageReservation {
-    margin-right: 100px;
+    margin-right: 90px;
 }
 
 .farmPageImageContainer {
@@ -124,4 +125,33 @@ ffb037 */
 
 .farmPageReservationContainer label {
     color: rgb(235, 235, 235);
+}
+
+.farmPageReviews {
+    margin-top: 150px;
+}
+
+
+.reservationForm p {
+    color: white;
+}
+
+
+.farmDescription {
+    width: 450px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2f5d62;
+    font-size: 17px;
+    color:whitesmoke
+}
+
+.farmDescriptionTitle {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.job {
+    font-weight: bold;
+    font-size: 20px;
 }

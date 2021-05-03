@@ -19,16 +19,6 @@ const LoginForm = () => {
     }
   };
 
-  // const loginDemo = async (e) => {
-  //   e.preventDefault();
-  //   setEmail("demo@aa.io")
-  //   setPassword("password")
-  //   const data = await dispatch(login(email, password));
-  //   if (data.errors) {
-  //     setErrors(data.errors);
-  //   }
-  // };
-
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -75,7 +65,7 @@ const LoginForm = () => {
           <button type="button" onClick={async(e) =>{
             setEmail("demo@aa.io")
             setPassword("password")
-            await dispatch(login(email, password));
+            dispatch(login("demo@aa.io", "password"));
             return <Redirect to="/" />
           }}>Demo</button>
         </form>
