@@ -51,8 +51,6 @@ function Farm() {
         }
     }
 
-    console.log('------------', picture)
-
     return (
         <>
             {farm ?

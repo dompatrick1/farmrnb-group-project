@@ -26,14 +26,6 @@ function SingleReview(props){
 
 let username;
 
-  let reviewUserName = users.map(user => {
-      if (user.id === props.review.userId) {
-          username = user.username
-      }
-  })
-
-  console.log(reviewUserName[1])
-
     const handleDelete = async (e, review) => {
         e.preventDefault()
         await dispatch(deleteReviewThunk(props.review.id))
