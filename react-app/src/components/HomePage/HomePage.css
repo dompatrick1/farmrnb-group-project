@@ -5,18 +5,28 @@
 .bannerParent {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .bannerTextScale {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     position: absolute;
     font-size: 3vw;
     top: 15%;
     color: #364547;
     text-shadow: 1px 1px 1px yellow;
+    margin-right: 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.bannerTextScale p {
+    font-size: 23px;
+}
+
+.bannerTextScale h1 {
+    margin-bottom: 0px;
 }
 
 .homeCategory {
