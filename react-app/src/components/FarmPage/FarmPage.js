@@ -65,7 +65,7 @@ function Farm() {
                             <div className="farmPageImageContainer">
                                 <button className="imageSelect" onClick={e => prevImage(e)}>{'<'}</button>
                                 {imagesArray.length ?
-                                    <img className="imageCarousel" key={imagesArray[picture].id} src={`${IMAGE_FOLDER}${imagesArray[picture].image}`} alt={imagesArray[picture].image}/>
+                                    <img className="imageCarousel" key={imagesArray[picture].id} src={`${IMAGE_FOLDER}${imagesArray[picture].image}`} alt={`${IMAGE_FOLDER}${imagesArray[picture].image}`}/>
                                 : null}
                                 <button className="imageSelect" onClick={e => nextImage(e)}>{'>'}</button>
                             </div>

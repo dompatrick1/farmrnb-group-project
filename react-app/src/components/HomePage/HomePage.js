@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { getFarmsThunk } from "../../store/farm"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
+import banner from "./farmrnb_banner.jpeg"
 
 import "./HomePage.css"
 
@@ -65,7 +66,7 @@ function Home() {
           <h1>Welcome to FarmRnB</h1>
           <p>We offer a hands-on, educational farming experience. You work, you stay.</p>
         </div>
-        <img src='./farmrnb_banner.jpeg' className="homeBanner" />
+        <img src={banner} className="homeBanner" />
       </div>
       {farms &&
         <div className="homeMainBox">

@@ -12,6 +12,7 @@ const SearchResults = (props) => {
   const dispatch = useDispatch()
   const [selected, setSelected] = useState({})
   let location = useLocation()
+  const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
 
 
   useEffect(async() => {
@@ -60,7 +61,7 @@ const SearchResults = (props) => {
         <Link to={`/farm/${farm.id}`} key={farm.id} style={{ textDecoration: 'none' }} className="searchFarmLink">
           {farmImage ?
             <div>
-              <img src={farmImage.image} className="searchFarmImage"/>
+              <img src={`${IMAGE_FOLDER}${farmImage.image}`} className="searchFarmImage"/>
             </div>
           : null}
           <div>
@@ -123,7 +124,7 @@ const SearchResults = (props) => {
                       <p>{selected.type}</p>
                       <p>{selected.address}</p>
                     </div>
-                    <img src={selected.image} alt={selected.name} className="mapImage"/>
+                    <img src={`${IMAGE_FOLDER}${selected.image}`} alt={selected.name} className="mapImage"/>
                   </div>
                 </InfoWindow>
               )

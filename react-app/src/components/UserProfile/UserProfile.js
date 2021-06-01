@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { getUserReservationsThunk, cancelReservationThunk } from "../../store/reservation"
 import { useDispatch, useSelector } from 'react-redux'
 import { getFarmsThunk } from '../../store/farm'
+import userProfileImage from './userProfileBackground.jpg'
 
 function UserProfile() {
   const { userId } = useParams();
@@ -66,7 +67,7 @@ function UserProfile() {
         }) : null}
       </div>
       <div className="up-background-image-container">
-        <img src="/userProfileBackground.jpg" className="up-background-image"></img>
+        <img src={userProfileImage} className="up-background-image"></img>
       </div>
     </div>
   );
