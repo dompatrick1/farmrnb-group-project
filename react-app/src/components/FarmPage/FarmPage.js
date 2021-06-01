@@ -9,19 +9,32 @@ import FarmReviews from "../reviews/reviewBox"
 
 import './FarmPage.css'
 
-const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
+// import allImages from '../../images/'
+
+// const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
 
 function Farm() {
+
     const dispatch = useDispatch()
     const farms = useSelector(state => state.farms);
     const images = useSelector(state => state.images);
     const [picture, setPicture] = useState(0)
-
+ 
 
     const { id } = useParams();
     const farm = farms[id]
 
-    const imagesArray = Object.values(images)
+    let imagesArray = Object.values(images)
+    let temp = []
+
+    if (imagesArray.length) {
+        imagesArray.map(async (image) => {
+            const newimage = await require(`../../images${image.image}`);
+            temp.push(newimage)
+        })
+    }
+
+    console.log('AARRAAY', temp)
 
     useEffect(() => {
         dispatch(getFarmsThunk())
@@ -51,6 +64,7 @@ function Farm() {
         }
     }
 
+
     return (
         <>
             {farm ?
@@ -62,8 +76,8 @@ function Farm() {
                         <div className="farmPageImages">
                             <div className="farmPageImageContainer">
                                 <button className="imageSelect" onClick={e => prevImage(e)}>{'<'}</button>
-                                {imagesArray.length ?
-                                    <img className="imageCarousel" key={imagesArray[picture].id} src={`${IMAGE_FOLDER}${imagesArray[picture].image}`} alt={imagesArray[picture].image}/>
+                                {temp.length ?
+                                    <img className="imageCarousel" key={temp[0]} src={temp[0]} alt={temp[0]}/>
                                 : null}
                                 <button className="imageSelect" onClick={e => nextImage(e)}>{'>'}</button>
                             </div>
