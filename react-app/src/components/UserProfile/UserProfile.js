@@ -52,9 +52,7 @@ function UserProfile() {
           const start = new Date(reservation.startDate).toLocaleDateString(undefined, options)
           const end = new Date(reservation.endDate).toLocaleDateString(undefined, options)
           const farmId = reservation.farmId
-          console.log("farmId=============", farms[0].name)
-          // console.log(farms.farmId.name)
-          // const farmName = farms.farmId.name
+
           return (
             <div className="userProfileReservationDiv" key={reservation.id}>
               <Link to={`/farm/${reservation.farmId}`} className="reservationLink">

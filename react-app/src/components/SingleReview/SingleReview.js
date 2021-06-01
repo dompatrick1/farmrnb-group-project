@@ -32,8 +32,6 @@ let username;
       }
   })
 
-  console.log(reviewUserName[1])
-
     const handleDelete = async (e, review) => {
         e.preventDefault()
         await dispatch(deleteReviewThunk(props.review.id))

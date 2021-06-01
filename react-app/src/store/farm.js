@@ -16,7 +16,7 @@ const getOneFarm = (farm) => ({
 //thunks
 
 export const getFarmsThunk = () => async (dispatch) => {
-  const response = await fetch('/api/farms')
+  const response = await fetch('/api/farms/')
   if (!response.ok) {
     throw response
   }

@@ -14,7 +14,7 @@ const getFarmImages = (images) => ({
 })
 
 export const getImagesThunk = () => async (dispatch)  => {
-    const response = await fetch('/api/images')
+    const response = await fetch('/api/images/')
     if (!response.ok) {
       throw response
     }

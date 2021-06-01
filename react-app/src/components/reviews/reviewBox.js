@@ -6,7 +6,6 @@ import SingleReview from '../SingleReview/SingleReview'
 
 function FarmReviews () {
     const {id} = useParams()
-    const sessionUser = useSelector(state => state.session.user);
     let reviews = Object.values(useSelector(state => state.reviews))
     const dispatch = useDispatch();
 
@@ -17,7 +16,7 @@ function FarmReviews () {
 
     let reviewBox = reviews.slice(0).reverse().map(review => {
         return (
-            <div>
+            <div key={review.id}>
                 {review ?
                     <SingleReview review={review} />
                 : null}

@@ -38,7 +38,6 @@ const SearchResults = (props) => {
   if(images.length){
   locations = searchedFarms.map(farm => {
     const farmImage = images.filter(image => image.farmId === farm.id)[0]
-    console.log('Here', farm)
     if (farmImage) {
       return {
         id: farm.id,

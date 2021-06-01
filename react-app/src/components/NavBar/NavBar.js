@@ -101,7 +101,6 @@ const NavBar = () => {
               />
               {uniqueArray.length ?
                 uniqueArray.map((val, key) => {
-                  console.log('UArray', uniqueArray)
                   return (
                     <div className="searchedList" key={key}>
                       <NavLink to={{
