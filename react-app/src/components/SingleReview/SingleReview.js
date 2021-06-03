@@ -26,16 +26,17 @@ function SingleReview(props){
 
 let username;
 
-  let reviewUserName = users.map(user => {
+  users.map(user => {
       if (user.id === props.review.userId) {
           username = user.username
       }
+      return null
   })
 
     const handleDelete = async (e, review) => {
         e.preventDefault()
         await dispatch(deleteReviewThunk(props.review.id))
-        dispatch(getFarmReviewsThunk(id))
+        await dispatch(getFarmReviewsThunk(id))
     }
 
     const handleEdit = async (e) => {
@@ -59,11 +60,6 @@ let username;
         }
 
         dispatch(editReviewThunk(payload))
-            // .catch(async (res) => {
-            //     const data = await res.json()
-            //     if (data && data.errors) setErrors(data.errors)
-
-            // })
 
             setEditing(false)
     }

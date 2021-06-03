@@ -1,5 +1,5 @@
 import "./UserProfile.css"
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getUserReservationsThunk, cancelReservationThunk } from "../../store/reservation"
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +9,6 @@ import userProfileImage from './userProfileBackground.jpg'
 function UserProfile() {
   const { userId } = useParams();
   const dispatch = useDispatch()
-  const [user, setUser] = useState({});
   const userReservations = Object.values(useSelector(state => state.reservations))
   const farms = Object.values(useSelector(state => state.farms))
   const sessionUser = useSelector(state => state.session.user);
@@ -20,7 +19,7 @@ function UserProfile() {
     window.scrollTo(0, 0)
   }, [dispatch, userId])
 
-  if (!user) {
+  if (!sessionUser) {
     return null;
   }
 
@@ -65,7 +64,7 @@ function UserProfile() {
         }) : null}
       </div>
       <div className="up-background-image-container">
-        <img src={userProfileImage} className="up-background-image"></img>
+        <img src={userProfileImage} className="up-background-image" alt="user profile"></img>
       </div>
     </div>
   );

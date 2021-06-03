@@ -66,7 +66,7 @@ function Home() {
           <h1>Welcome to FarmRnB</h1>
           <p>We offer a hands-on, educational farming experience. You work, you stay.</p>
         </div>
-        <img src={banner} className="homeBanner" />
+        <img src={banner} className="homeBanner" alt="banner"/>
       </div>
       {farms &&
         <div className="homeMainBox">
