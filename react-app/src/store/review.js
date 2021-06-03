@@ -75,17 +75,17 @@ export const createReviewThunk = (reviews) => async (dispatch) => {
 }
 
 export const deleteReviewThunk = (id) => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${id}/`, { method: "DELETE" })
+  const response = await fetch(`/api/reviews/${id}`, { method: "DELETE" })
 
   // const review = await response.json()
   dispatch(delete_review())
-  return null;
+  return response;
 }
 
 export const editReviewThunk = (reviewData) => async (dispatch) => {
   const { id, review, rating, userId, farmId } = reviewData
 
-  const response = await fetch(`/api/reviews/farm/${id}/`, {
+  const response = await fetch(`/api/reviews/farm/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

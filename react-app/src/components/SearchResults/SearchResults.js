@@ -15,7 +15,7 @@ const SearchResults = (props) => {
   const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
 
 
-  useEffect(async() => {
+  useEffect(() => {
     dispatch(getFarmsThunk())
     dispatch(getImagesThunk())
     window.scrollTo(0, 0)
@@ -52,6 +52,7 @@ const SearchResults = (props) => {
       }
 
     }
+    return null
   })
 
   resultsBox = searchedFarms.map(farm => {
@@ -60,7 +61,7 @@ const SearchResults = (props) => {
         <Link to={`/farm/${farm.id}`} key={farm.id} style={{ textDecoration: 'none' }} className="searchFarmLink">
           {farmImage ?
             <div>
-              <img src={`${IMAGE_FOLDER}${farmImage.image}`} className="searchFarmImage"/>
+              <img src={`${IMAGE_FOLDER}${farmImage.image}`} className="searchFarmImage" alt="farm"/>
             </div>
           : null}
           <div>
@@ -106,6 +107,7 @@ const SearchResults = (props) => {
                     <Marker key={farm.name} position={farm.location} onClick={() => onSelect(farm)} />
                   )
                 }
+                return null;
             })
             : null}
 

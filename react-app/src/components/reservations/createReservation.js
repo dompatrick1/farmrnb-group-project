@@ -1,7 +1,7 @@
-import {createReservationThunk, getFarmReservationsThunk} from '../../store/reservation'
+import {createReservationThunk } from '../../store/reservation'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "../FarmPage/FarmPage.css"
 
 function CreateReservationForm() {
@@ -9,21 +9,12 @@ function CreateReservationForm() {
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user);
-    const reservations = Object.values(useSelector(state => state.reservations))
-
-    const startDateArray = [];
-    const endDateArray = [];
-
-    const reservationArray = reservations.map(reservation => {
-        startDateArray.push(reservation.startDate)
-        endDateArray.push(reservation.endDate)
-    })
 
     let userId
     const { id } = useParams()
 
-    const [startDate, setStartDate] = useState()
-    const [endDate, setEndDate] = useState()
+    const [startDate, setStartDate] = useState("")
+    const [endDate, setEndDate] = useState("")
     const [errors, setErrors] = useState([])
 
     const farmId = parseInt(id)
@@ -53,12 +44,13 @@ function CreateReservationForm() {
         history.push(`/farm/${farmId}`)
     }
 
-    let today = new Date().toLocaleDateString()
-
     return (
         <div className="reservationForm">
             <form onSubmit={handleSubmit}>
                 <div className="farmPageReservationContainer">
+                    <ul>
+                        {errors.map((error, index) => <li key={index}>{error}</li>)}
+                    </ul>
                     <h2>Reserve Your Stay</h2>
                     <label>Start Date</label>
                     <input

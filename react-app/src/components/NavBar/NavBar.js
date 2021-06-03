@@ -1,25 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
-import { getFarmsThunk } from '../../store/farm'
 
 import './navbar.css'
 
 const NavBar = () => {
-  // const dispatch = useDispatch()
   const farms = useSelector(state => state.farms)
   const user = useSelector(state => state.session.user)
   const farmsArray = Object.values(farms)
   const [location, setLocation] = useState("")
-  // const [type, setType] = useState("")
 
   const uniqueArray = []
   let userId;
 
-  // useEffect(() => {
-  //   dispatch(getFarmsThunk())
-  // }, [dispatch])
   if (user) {
     userId = user.id
   }
@@ -31,6 +25,7 @@ const NavBar = () => {
       if (!uniqueArray.includes(val.state)) {
         uniqueArray.push(val.state)
       }
+      return null
     })
   }
 

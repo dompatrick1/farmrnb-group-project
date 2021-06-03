@@ -1,5 +1,3 @@
-import { getFarmReviewsThunk } from "./review"
-
 const GET_FARM_RESERVATIONS = "reservations/GET_FARM_RESERVATIONS"
 const GET_USER_RESERVATIONS = "reservations/GET_USER_RESERVATIONS"
 const CREATE_RESERVATION = "reservations/CREATE_RESERVATION"
@@ -73,7 +71,7 @@ export const createReservationThunk = (reservation) => async dispatch => {
 }
 
 export const cancelReservationThunk = (id) => async dispatch => {
-    const response = await fetch(`/api/reservations/${id}`, { method: "DELETE" })
+    await fetch(`/api/reservations/${id}`, { method: "DELETE" })
     dispatch(cancel_reservation())
     return null
 }
@@ -87,9 +85,9 @@ export const editReservationThunk = (editReservation) => async dispatch => {
             startDate, endDate
         })
     })
-    const editReservation = await response.json();
-    dispatch(edit_reservation(editReservation))
-    return editReservation;
+    const editThisReservation = await response.json();
+    dispatch(edit_reservation(editThisReservation))
+    return editThisReservation;
 }
 
 const initialState = {}
