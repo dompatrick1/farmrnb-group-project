@@ -26,12 +26,14 @@ function SingleReview(props){
 
 let username;
 
+if (users){
   users.map(user => {
       if (user.id === props.review.userId) {
           username = user.username
       }
       return null
   })
+}
 
     const handleDelete = async (e, review) => {
         e.preventDefault()
