@@ -14,7 +14,8 @@ See FarmRnB live [here](https://farmrnb.herokuapp.com/)
 
 1. Account creation, log in, log out, and guest/demo login
 2. Filtered Search using Redux State Management
-3. Review Submission and Edit
+3. Users are able to make a reservation for their establishment of choice
+4. Review Submission, edit, and delete for each individual farm
 
 # Flask React Project
 
