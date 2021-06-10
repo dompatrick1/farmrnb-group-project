@@ -18,13 +18,14 @@ function ResCalendar(props) {
   function isWithinRange(date, range) {
     return isWithinInterval(date, { start: range[0], end: range[1] });
   }
-  
+
   function isWithinRanges(date, ranges) {
     return ranges.some(range => isWithinRange(date, range));
   }
 
   function tileDisabled({ date, view }) {
     // Add class to tiles in month view only
+    console.log(view)
     if (view === 'month') {
       // Check if a date React-Calendar wants to check is within any of the ranges
       return isWithinRanges(date, disabledRanges);
@@ -36,7 +37,7 @@ function ResCalendar(props) {
   return (
     <>
       <Calendar
-        onChange={e => setDate(e.target.value)}
+        onChange={e => setDate(e)}
         value={date}
         tileDisabled={tileDisabled}
       />
