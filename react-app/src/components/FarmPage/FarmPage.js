@@ -80,7 +80,7 @@ function Farm() {
                             </div>
                         </div>
                         <div className="farmPageReservation">
-                            <ResCalendar reservations={reservations} />
+                            {/* <ResCalendar reservations={reservations} /> */}
                             <CreateReservationForm />
                             <div className="farmPageReviews">
                                 <CreateReviewForm />
