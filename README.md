@@ -8,7 +8,13 @@ See FarmRnB live [here](https://farmrnb.herokuapp.com/)
 
 * Backend: Python / Flask / SQLAlchemy / PostgreSQL
 * Frontend: React / Redux
-* Google Maps Api for rendering a map for a more enjoyable user experience
+* Google Maps API for rendering a map for a more enjoyable user experience
+
+## Main Features
+
+1. Account creation, log in, log out, and guest/demo login
+2. Filtered Search using Redux State Management
+3. Review Submission and Edit
 
 # Flask React Project
 
