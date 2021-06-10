@@ -1,5 +1,5 @@
 # FarmRnB
-
+<img width="959" alt="farmrnb-splash" src="https://user-images.githubusercontent.com/72318026/121571012-7e1b8980-c9f0-11eb-806c-f6ad7e8d0f83.PNG">
 FarmRnB is a fun AirBnB inspired clone which gives users a unique opportunity to book stays at a wide variety of farms and wineries. Users will be able to go through the experience of life at these types of establishments and truly know what goes into making their favorite foods and products! 
 
 See FarmRnB live [here](https://farmrnb.herokuapp.com/)
