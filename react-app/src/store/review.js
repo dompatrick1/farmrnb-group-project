@@ -34,7 +34,7 @@ const editReview = (reviewEdit) => ({
 // ****************** THUNKS ******************** //
 
 export const getFarmReviewsThunk = (id) => async (dispatch) => {
-  const response = await fetch(`/api/reviews/farm/${id}`)
+  const response = await fetch(`/api/reviews/farm/${id}/`)
   if (!response.ok) {
     throw response
   }
