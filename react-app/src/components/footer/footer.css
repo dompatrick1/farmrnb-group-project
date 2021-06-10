@@ -1,7 +1,6 @@
 .footer {
     display: flex;
     position:relative;
-    /* align-items: flex-end; */
     bottom: 0;
     justify-content: center;
     background-color: #ffe268;
@@ -10,4 +9,8 @@
     word-spacing: 2px;
     margin-top: 50px;
     margin-bottom: 0px;
+}
+
+.footerLink {
+    text-decoration: none;
 }
