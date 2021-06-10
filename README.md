@@ -4,6 +4,12 @@ FarmRnB is a fun AirBnB inspired clone which gives users a unique opportunity to
 
 See FarmRnB live [here](https://farmrnb.herokuapp.com/)
 
+## Technologies
+
+* Backend: Python / Flask / SQLAlchemy / PostgreSQL
+* Frontend: React / Redux
+* Google Maps Api for rendering a map for a more enjoyable user experience
+
 # Flask React Project
 
 This is the backend for the Flask React project.
