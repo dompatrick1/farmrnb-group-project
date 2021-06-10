@@ -1,11 +1,14 @@
 import { getFarmsThunk } from '../../store/farm'
 import { getFarmImagesThunk } from '../../store/image'
 import { useDispatch, useSelector } from 'react-redux'
+import { getFarmReservationsThunk } from "../../store/reservation"
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CreateReviewForm from "../reviews/createReview"
 import CreateReservationForm from "../reservations/createReservation"
 import FarmReviews from "../reviews/reviewBox"
+import ResCalendar from "../calendar/Calendar"
+
 
 import './FarmPage.css'
 
@@ -16,6 +19,7 @@ function Farm() {
     const farms = useSelector(state => state.farms);
     const images = useSelector(state => state.images);
     const [picture, setPicture] = useState(0)
+    const reservations = useSelector(state => state.reservations)
 
 
     const { id } = useParams();
@@ -26,6 +30,7 @@ function Farm() {
     useEffect(() => {
         dispatch(getFarmsThunk())
         dispatch(getFarmImagesThunk(id))
+        dispatch(getFarmReservationsThunk(id))
         window.scrollTo(0, 0)
     }, [dispatch, id])
 
@@ -63,8 +68,8 @@ function Farm() {
                             <div className="farmPageImageContainer">
                                 <button className="imageSelect" onClick={e => prevImage(e)}>{'<'}</button>
                                 {imagesArray.length ?
-                                    <img className="imageCarousel" key={imagesArray[picture].id} src={`${IMAGE_FOLDER}${imagesArray[picture].image}`} alt={`${IMAGE_FOLDER}${imagesArray[picture].image}`}/>
-                                : null}
+                                    <img className="imageCarousel" key={imagesArray[picture].id} src={`${IMAGE_FOLDER}${imagesArray[picture].image}`} alt={`${IMAGE_FOLDER}${imagesArray[picture].image}`} />
+                                    : null}
                                 <button className="imageSelect" onClick={e => nextImage(e)}>{'>'}</button>
                             </div>
                             <div>
@@ -75,15 +80,16 @@ function Farm() {
                             </div>
                         </div>
                         <div className="farmPageReservation">
+                            <ResCalendar reservations={reservations} />
                             <CreateReservationForm />
                             <div className="farmPageReviews">
                                 <CreateReviewForm />
-                                <FarmReviews/>
+                                <FarmReviews />
                             </div>
                         </div>
                     </div>
                 </div>
-            : null}
+                : null}
         </>
     )
 
