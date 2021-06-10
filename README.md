@@ -19,9 +19,11 @@ Filtered Search using Redux State Management
 <img width="945" alt="farmrnb-search" src="https://user-images.githubusercontent.com/72318026/121576734-adcd9000-c9f6-11eb-813a-e0677f6c212b.PNG">
 
 Users are able to make a reservation for their establishment of choice
+
 <img width="359" alt="farmrnb-res" src="https://user-images.githubusercontent.com/72318026/121577348-6d224680-c9f7-11eb-9aa2-afe088f241c2.PNG">
 
 Review submission, edit, and delete for each individual farm
+
 <img width="321" alt="farmrnb-review" src="https://user-images.githubusercontent.com/72318026/121577373-73182780-c9f7-11eb-99c6-12fe64a64529.PNG">
 
 # Flask React Project
