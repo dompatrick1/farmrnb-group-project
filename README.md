@@ -35,7 +35,7 @@ This is the backend for the Flask React project.
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone 
+   git clone https://github.com/dompatrick1/farmrnb-group-project.git
    ```
 
 2. Install dependencies
