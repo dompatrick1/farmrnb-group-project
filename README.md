@@ -12,10 +12,19 @@ See FarmRnB live [here](https://farmrnb.herokuapp.com/)
 
 ## Main Features
 
-1. Account creation, log in, log out, and guest/demo login
-2. Filtered Search using Redux State Management
-3. Users are able to make a reservation for their establishment of choice
-4. Review submission, edit, and delete for each individual farm
+Account creation, log in, log out, and guest/demo login
+<img width="946" alt="farmrnb-login" src="https://user-images.githubusercontent.com/72318026/121575992-f8024180-c9f5-11eb-95d4-002db647d176.PNG">
+
+Filtered Search using Redux State Management
+<img width="945" alt="farmrnb-search" src="https://user-images.githubusercontent.com/72318026/121576734-adcd9000-c9f6-11eb-813a-e0677f6c212b.PNG">
+
+Users are able to make a reservation for their establishment of choice
+
+<img width="359" alt="farmrnb-res" src="https://user-images.githubusercontent.com/72318026/121577348-6d224680-c9f7-11eb-9aa2-afe088f241c2.PNG">
+
+Review submission, edit, and delete for each individual farm
+
+<img width="321" alt="farmrnb-review" src="https://user-images.githubusercontent.com/72318026/121577373-73182780-c9f7-11eb-99c6-12fe64a64529.PNG">
 
 # Flask React Project
 
@@ -26,7 +35,7 @@ This is the backend for the Flask React project.
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/dompatrick1/farmrnb-group-project.git
    ```
 
 2. Install dependencies
@@ -73,45 +82,3 @@ This is the backend for the Flask React project.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
 
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
